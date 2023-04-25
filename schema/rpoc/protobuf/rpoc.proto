@@ -1,0 +1,109 @@
+message Address
+ {
+  string street = 0
+  string city = 0
+  string postalCode = 0
+ }
+message Concept
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+  string image = 0
+ }
+message Container
+ {
+ repeated  person persons = 0
+ repeated  role roles = 0
+ repeated  context contexts = 0
+ repeated  organization organizations = 0
+ }
+// A team, group, project, or other entity that has a context for a person
+message Context
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+  string image = 0
+  string primaryEmail = 0
+  string missionStatement = 0
+  date startDate = 0
+  date endDate = 0
+  context parent = 0
+ repeated  string aliases = 0
+ }
+message EmploymentEvent
+ {
+  date startDate = 0
+  date endDate = 0
+  float duration = 0
+  boolean isCurrent = 0
+  organization employedAt = 0
+ }
+message Event
+ {
+  date startDate = 0
+  date endDate = 0
+  float duration = 0
+  boolean isCurrent = 0
+ }
+message Interaction
+ {
+  string type = 0
+  string status = 0
+  date startDate = 0
+  date endDate = 0
+  string relatedTo = 0
+  context obsoletedBy = 0
+ }
+// A generic grouping for any identifiable entity
+message NamedThing
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+  string image = 0
+ }
+// An organization such as a company or university
+message Organization
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+  string image = 0
+  string missionStatement = 0
+  string foundingDate = 0
+  place foundingLocation = 0
+ repeated  string aliases = 0
+ }
+// A person (alive, dead, undead, or fictional).
+message Person
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+  string image = 0
+  string primaryEmail = 0
+  string birthDate = 0
+  genderType gender = 0
+  address currentAddress = 0
+ repeated  employmentEvent hasEmploymentHistory = 0
+ repeated  string aliases = 0
+ }
+message Place
+ {
+  string id = 0
+  string name = 0
+ repeated  string aliases = 0
+ }
+// A set of responsibilities, skills and tasks that a person has in a context
+message Role
+ {
+  string id = 0
+  string roleName = 0
+  roleType roleType = 0
+  string description = 0
+  date startDate = 0
+  date endDate = 0
+ repeated  string aliases = 0
+ }

@@ -1,0 +1,126 @@
+type Address
+  {
+    street: String
+    city: String
+    postalCode: String
+  }
+
+type Concept
+  {
+    id: String!
+    name: String
+    description: String
+    image: String
+  }
+
+type Container
+  {
+    persons: [Person]
+    roles: [Role]
+    contexts: [Context]
+    organizations: [Organization]
+  }
+
+type Context implements HasAliases
+  {
+    id: String!
+    name: String
+    description: String
+    image: String
+    primaryEmail: String
+    missionStatement: String
+    startDate: Date
+    endDate: Date
+    parent: Context
+    aliases: [String]
+  }
+
+type EmploymentEvent
+  {
+    startDate: Date
+    endDate: Date
+    duration: Float
+    isCurrent: Boolean
+    employedAt: Organization
+  }
+
+type Event
+  {
+    startDate: Date
+    endDate: Date
+    duration: Float
+    isCurrent: Boolean
+  }
+
+interface HasAliases
+  {
+    aliases: [String]
+  }
+
+type Interaction
+  {
+    type: String
+    status: String
+    startDate: Date
+    endDate: Date
+    relatedTo: String
+    obsoletedBy: Context
+  }
+
+type NamedThing
+  {
+    id: String!
+    name: String
+    description: String
+    image: String
+  }
+
+type Organization implements HasAliases
+  {
+    id: String!
+    name: String
+    description: String
+    image: String
+    missionStatement: String
+    foundingDate: String
+    foundingLocation: Place
+    aliases: [String]
+  }
+
+type Person implements HasAliases
+  {
+    id: String!
+    name: String
+    description: String
+    image: String
+    primaryEmail: String
+    birthDate: String
+    gender: GenderType
+    currentAddress: Address
+    hasEmploymentHistory: [EmploymentEvent]
+    aliases: [String]
+  }
+
+type Place implements HasAliases
+  {
+    id: String!
+    name: String
+    aliases: [String]
+  }
+
+type Role implements HasAliases
+  {
+    id: String!
+    roleName: String
+    roleType: RoleType
+    description: String
+    startDate: Date
+    endDate: Date
+    aliases: [String]
+  }
+
+interface WithLocation
+  {
+    inLocation: Place
+  }
+

@@ -1,0 +1,1187 @@
+{
+  "name": "rpoc",
+  "description": "Information about people, their roles together with orgainsational context based on [schema.org](http://schema.org) and [Team Topologies](https://teamtopologies.com/).",
+  "id": "https://pub.tech/schema/rpoc/",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "rpoc",
+      "prefix_reference": "https://pub.tech/schema/rpoc/"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    {
+      "prefix_prefix": "rdfs",
+      "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
+    },
+    {
+      "prefix_prefix": "GSSO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/GSSO_"
+    },
+    {
+      "prefix_prefix": "P",
+      "prefix_reference": "http://example.org/P/"
+    },
+    {
+      "prefix_prefix": "ROR",
+      "prefix_reference": "http://example.org/ror/"
+    },
+    {
+      "prefix_prefix": "CODE",
+      "prefix_reference": "http://example.org/code/"
+    },
+    {
+      "prefix_prefix": "GEO",
+      "prefix_reference": "http://example.org/geoloc/"
+    }
+  ],
+  "emit_prefixes": [
+    "rdf",
+    "rdfs",
+    "xsd"
+  ],
+  "default_curi_maps": [
+    "semweb_context"
+  ],
+  "default_prefix": "rpoc",
+  "default_range": "string",
+  "subsets": [
+    {
+      "name": "basic_subset",
+      "definition_uri": "https://pub.tech/schema/rpoc/BasicSubset",
+      "description": "A subset of the schema that handles basic information",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "@type": "SubsetDefinition"
+    }
+  ],
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritence and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "ContextType",
+      "definition_uri": "https://pub.tech/schema/rpoc/ContextType",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "permissible_values": [
+        {
+          "text": "team",
+          "description": "A team is a group of people working together on a project"
+        },
+        {
+          "text": "group",
+          "description": "A group is a collection of people with a common interest"
+        },
+        {
+          "text": "project",
+          "description": "A project is a temporary endeavor with a defined goal"
+        },
+        {
+          "text": "organization",
+          "description": "An organization is a group of people with a common purpose"
+        }
+      ]
+    },
+    {
+      "name": "RoleType",
+      "definition_uri": "https://pub.tech/schema/rpoc/RoleType",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "permissible_values": [
+        {
+          "text": "permanent",
+          "description": "A member who is permanent part of a team or group"
+        },
+        {
+          "text": "enabling",
+          "description": "A enabling role is a person who helps a team or group without being a permanent member"
+        },
+        {
+          "text": "temporary",
+          "description": "A short lived role that is not permanent"
+        }
+      ]
+    },
+    {
+      "name": "InteractionType",
+      "definition_uri": "https://pub.tech/schema/rpoc/InteractionType",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "permissible_values": [
+        {
+          "text": "collaboration",
+          "description": "A collaboration interaction is a relationship between two contexts which work together on a project"
+        },
+        {
+          "text": "facilitating",
+          "description": "A facilitating interaction is a relationship between two contexts which help each other"
+        },
+        {
+          "text": "xaas",
+          "description": "A XaaS interaction is a relationship between two contexts where one provides a service to the other"
+        }
+      ]
+    },
+    {
+      "name": "GenderType",
+      "definition_uri": "https://pub.tech/schema/rpoc/GenderType",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "permissible_values": [
+        {
+          "text": "nonbinary man",
+          "meaning": "GSSO:009254"
+        },
+        {
+          "text": "nonbinary woman",
+          "meaning": "GSSO:009253"
+        },
+        {
+          "text": "transgender woman",
+          "meaning": "GSSO:000384"
+        },
+        {
+          "text": "transgender man",
+          "meaning": "GSSO:000372"
+        },
+        {
+          "text": "cisgender man",
+          "meaning": "GSSO:000371"
+        },
+        {
+          "text": "cisgender woman",
+          "meaning": "GSSO:000385"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "id",
+      "definition_uri": "https://pub.tech/schema/rpoc/id",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/identifier"
+      ],
+      "slot_uri": "http://schema.org/identifier",
+      "identifier": true,
+      "owner": "Place",
+      "domain_of": [
+        "NamedThing",
+        "Role",
+        "Place"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://pub.tech/schema/rpoc/name",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/name"
+      ],
+      "slot_uri": "http://schema.org/name",
+      "owner": "Place",
+      "domain_of": [
+        "NamedThing",
+        "Place"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://pub.tech/schema/rpoc/description",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/description"
+      ],
+      "slot_uri": "http://schema.org/description",
+      "owner": "Role",
+      "domain_of": [
+        "NamedThing",
+        "Role"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "image",
+      "definition_uri": "https://pub.tech/schema/rpoc/image",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/image"
+      ],
+      "slot_uri": "http://schema.org/image",
+      "owner": "NamedThing",
+      "domain_of": [
+        "NamedThing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "parent",
+      "definition_uri": "https://pub.tech/schema/rpoc/parent",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/parent",
+      "owner": "Context",
+      "domain_of": [
+        "Context"
+      ],
+      "range": "Context",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "gender",
+      "definition_uri": "https://pub.tech/schema/rpoc/gender",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/gender"
+      ],
+      "slot_uri": "http://schema.org/gender",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "GenderType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "primary_email",
+      "definition_uri": "https://pub.tech/schema/rpoc/primary_email",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "slot_uri": "http://schema.org/email",
+      "owner": "Context",
+      "domain_of": [
+        "Person",
+        "Context"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "birth_date",
+      "definition_uri": "https://pub.tech/schema/rpoc/birth_date",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/birthDate"
+      ],
+      "slot_uri": "http://schema.org/birthDate",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "employed_at",
+      "definition_uri": "https://pub.tech/schema/rpoc/employed_at",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/employed_at",
+      "owner": "EmploymentEvent",
+      "domain_of": [
+        "EmploymentEvent"
+      ],
+      "range": "Organization",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "is_current",
+      "definition_uri": "https://pub.tech/schema/rpoc/is_current",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/is_current",
+      "owner": "Event",
+      "domain_of": [
+        "Event"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_employment_history",
+      "definition_uri": "https://pub.tech/schema/rpoc/has_employment_history",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/has_employment_history",
+      "multivalued": true,
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "EmploymentEvent",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "in_location",
+      "definition_uri": "https://pub.tech/schema/rpoc/in_location",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/in_location",
+      "owner": "WithLocation",
+      "domain_of": [
+        "WithLocation"
+      ],
+      "range": "Place",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "current_address",
+      "definition_uri": "https://pub.tech/schema/rpoc/current_address",
+      "description": "The address at which a person currently lives",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/current_address",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "Address",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "related_to",
+      "definition_uri": "https://pub.tech/schema/rpoc/related_to",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/related_to",
+      "owner": "Interaction",
+      "domain_of": [
+        "Interaction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "obsoleted_by",
+      "definition_uri": "https://pub.tech/schema/rpoc/obsoleted_by",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/obsoleted_by",
+      "owner": "Interaction",
+      "domain_of": [
+        "Interaction"
+      ],
+      "range": "Context",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type",
+      "definition_uri": "https://pub.tech/schema/rpoc/type",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/type",
+      "owner": "Interaction",
+      "domain_of": [
+        "Interaction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "street",
+      "definition_uri": "https://pub.tech/schema/rpoc/street",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/street",
+      "owner": "Address",
+      "domain_of": [
+        "Address"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "city",
+      "definition_uri": "https://pub.tech/schema/rpoc/city",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/city",
+      "owner": "Address",
+      "domain_of": [
+        "Address"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mission_statement",
+      "definition_uri": "https://pub.tech/schema/rpoc/mission_statement",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/mission_statement",
+      "owner": "Organization",
+      "domain_of": [
+        "Context",
+        "Organization"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "founding_date",
+      "definition_uri": "https://pub.tech/schema/rpoc/founding_date",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/founding_date",
+      "owner": "Organization",
+      "domain_of": [
+        "Organization"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "founding_location",
+      "definition_uri": "https://pub.tech/schema/rpoc/founding_location",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/founding_location",
+      "owner": "Organization",
+      "domain_of": [
+        "Organization"
+      ],
+      "range": "Place",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "postal_code",
+      "definition_uri": "https://pub.tech/schema/rpoc/postal_code",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/postal_code",
+      "owner": "Address",
+      "domain_of": [
+        "Address"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "start_date",
+      "definition_uri": "https://pub.tech/schema/rpoc/start_date",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://www.w3.org/ns/prov#startedAtTime"
+      ],
+      "slot_uri": "http://www.w3.org/ns/prov#startedAtTime",
+      "owner": "Interaction",
+      "domain_of": [
+        "Context",
+        "Role",
+        "Event",
+        "Interaction"
+      ],
+      "range": "date",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "duration",
+      "definition_uri": "https://pub.tech/schema/rpoc/duration",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/duration",
+      "owner": "Event",
+      "domain_of": [
+        "Event"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "end_date",
+      "definition_uri": "https://pub.tech/schema/rpoc/end_date",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://www.w3.org/ns/prov#endedAtTime"
+      ],
+      "slot_uri": "http://www.w3.org/ns/prov#endedAtTime",
+      "owner": "Interaction",
+      "domain_of": [
+        "Context",
+        "Role",
+        "Event",
+        "Interaction"
+      ],
+      "range": "date",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "role_name",
+      "definition_uri": "https://pub.tech/schema/rpoc/role_name",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/roleName"
+      ],
+      "slot_uri": "http://schema.org/roleName",
+      "owner": "Role",
+      "domain_of": [
+        "Role"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "role_type",
+      "definition_uri": "https://pub.tech/schema/rpoc/role_type",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/role_type",
+      "owner": "Role",
+      "domain_of": [
+        "Role"
+      ],
+      "range": "RoleType",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "status",
+      "definition_uri": "https://pub.tech/schema/rpoc/status",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/status"
+      ],
+      "slot_uri": "http://schema.org/status",
+      "owner": "Interaction",
+      "domain_of": [
+        "Interaction"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "persons",
+      "definition_uri": "https://pub.tech/schema/rpoc/persons",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/persons",
+      "multivalued": true,
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "Person",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "roles",
+      "definition_uri": "https://pub.tech/schema/rpoc/roles",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/roles",
+      "multivalued": true,
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "Role",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contexts",
+      "definition_uri": "https://pub.tech/schema/rpoc/contexts",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/contexts",
+      "multivalued": true,
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "Context",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "organizations",
+      "definition_uri": "https://pub.tech/schema/rpoc/organizations",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/organizations",
+      "multivalued": true,
+      "owner": "Container",
+      "domain_of": [
+        "Container"
+      ],
+      "range": "Organization",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasAliases__aliases",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "exact_mappings": [
+        "http://schema.org/alternateName"
+      ],
+      "slot_uri": "https://pub.tech/schema/rpoc/aliases",
+      "multivalued": true,
+      "alias": "aliases",
+      "owner": "HasAliases",
+      "domain_of": [
+        "HasAliases"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Person_primary_email",
+      "definition_uri": "https://pub.tech/schema/rpoc/primary_email",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "is_a": "primary_email",
+      "domain": "Person",
+      "slot_uri": "http://schema.org/email",
+      "alias": "primary_email",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "primary_email",
+      "range": "string",
+      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Context_primary_email",
+      "definition_uri": "https://pub.tech/schema/rpoc/primary_email",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/email"
+      ],
+      "is_a": "primary_email",
+      "domain": "Context",
+      "slot_uri": "http://schema.org/email",
+      "alias": "primary_email",
+      "owner": "Context",
+      "domain_of": [
+        "Context"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "primary_email",
+      "range": "string",
+      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "NamedThing",
+      "definition_uri": "https://pub.tech/schema/rpoc/NamedThing",
+      "description": "A generic grouping for any identifiable entity",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "close_mappings": [
+        "schema:Thing"
+      ],
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "image"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/NamedThing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Person",
+      "definition_uri": "https://pub.tech/schema/rpoc/Person",
+      "description": "A person (alive, dead, undead, or fictional).",
+      "in_subset": [
+        "basic_subset"
+      ],
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "schema:Person"
+      ],
+      "is_a": "NamedThing",
+      "mixins": [
+        "HasAliases"
+      ],
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "image",
+        "Person_primary_email",
+        "birth_date",
+        "gender",
+        "current_address",
+        "has_employment_history",
+        "hasAliases__aliases"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Person",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "HasAliases",
+      "definition_uri": "https://pub.tech/schema/rpoc/HasAliases",
+      "description": "A mixin applied to any class that can have aliases/alternateNames",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mixin": true,
+      "slots": [
+        "hasAliases__aliases"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "aliases",
+          "exact_mappings": [
+            "schema:alternateName"
+          ],
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://pub.tech/schema/rpoc/HasAliases",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Context",
+      "definition_uri": "https://pub.tech/schema/rpoc/Context",
+      "description": "A team, group, project, or other entity that has a context for a person",
+      "in_subset": [
+        "basic_subset"
+      ],
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "schema:Project"
+      ],
+      "is_a": "NamedThing",
+      "mixins": [
+        "HasAliases"
+      ],
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "image",
+        "Context_primary_email",
+        "mission_statement",
+        "start_date",
+        "end_date",
+        "parent",
+        "hasAliases__aliases"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Project",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Role",
+      "definition_uri": "https://pub.tech/schema/rpoc/Role",
+      "description": "A set of responsibilities, skills and tasks that a person has in a context",
+      "in_subset": [
+        "basic_subset"
+      ],
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "schema:Role"
+      ],
+      "mixins": [
+        "HasAliases"
+      ],
+      "slots": [
+        "id",
+        "role_name",
+        "role_type",
+        "description",
+        "start_date",
+        "end_date",
+        "hasAliases__aliases"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Role",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Organization",
+      "definition_uri": "https://pub.tech/schema/rpoc/Organization",
+      "description": "An organization such as a company or university",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "schema:Organization"
+      ],
+      "is_a": "NamedThing",
+      "mixins": [
+        "HasAliases"
+      ],
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "image",
+        "mission_statement",
+        "founding_date",
+        "founding_location",
+        "hasAliases__aliases"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/Organization",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Place",
+      "definition_uri": "https://pub.tech/schema/rpoc/Place",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mixins": [
+        "HasAliases"
+      ],
+      "slots": [
+        "id",
+        "name",
+        "hasAliases__aliases"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/Place",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Address",
+      "definition_uri": "https://pub.tech/schema/rpoc/Address",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "schema:PostalAddress"
+      ],
+      "slots": [
+        "street",
+        "city",
+        "postal_code"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://schema.org/PostalAddress",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Event",
+      "definition_uri": "https://pub.tech/schema/rpoc/Event",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "close_mappings": [
+        "schema:Event"
+      ],
+      "slots": [
+        "start_date",
+        "end_date",
+        "duration",
+        "is_current"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/Event",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Concept",
+      "definition_uri": "https://pub.tech/schema/rpoc/Concept",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "image"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/Concept",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Interaction",
+      "definition_uri": "https://pub.tech/schema/rpoc/Interaction",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slots": [
+        "type",
+        "status",
+        "start_date",
+        "end_date",
+        "related_to",
+        "obsoleted_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/Interaction",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EmploymentEvent",
+      "definition_uri": "https://pub.tech/schema/rpoc/EmploymentEvent",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "is_a": "Event",
+      "slots": [
+        "start_date",
+        "end_date",
+        "duration",
+        "is_current",
+        "employed_at"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/EmploymentEvent",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "WithLocation",
+      "definition_uri": "https://pub.tech/schema/rpoc/WithLocation",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mixin": true,
+      "slots": [
+        "in_location"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/WithLocation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Container",
+      "definition_uri": "https://pub.tech/schema/rpoc/Container",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slots": [
+        "persons",
+        "roles",
+        "contexts",
+        "organizations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://pub.tech/schema/rpoc/Container",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "rpoc.yaml",
+  "source_file_date": "2023-04-25T19:08:57",
+  "source_file_size": 6766,
+  "generation_date": "2023-04-25T19:09:02",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "rpoc/jsonld/rpoc.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://pub.tech/schema/rpoc/"
+    }
+  ]
+}

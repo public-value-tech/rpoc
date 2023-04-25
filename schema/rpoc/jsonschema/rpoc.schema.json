@@ -1,0 +1,445 @@
+{
+    "$defs": {
+        "Address": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "postal_code": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                }
+            },
+            "title": "Address",
+            "type": "object"
+        },
+        "Concept": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Concept",
+            "type": "object"
+        },
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "contexts": {
+                    "items": {
+                        "$ref": "#/$defs/Context"
+                    },
+                    "type": "array"
+                },
+                "organizations": {
+                    "items": {
+                        "$ref": "#/$defs/Organization"
+                    },
+                    "type": "array"
+                },
+                "persons": {
+                    "items": {
+                        "$ref": "#/$defs/Person"
+                    },
+                    "type": "array"
+                },
+                "roles": {
+                    "items": {
+                        "$ref": "#/$defs/Role"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "Context": {
+            "additionalProperties": false,
+            "description": "A team, group, project, or other entity that has a context for a person",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "mission_statement": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent": {
+                    "type": "string"
+                },
+                "primary_email": {
+                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                    "type": "string"
+                },
+                "start_date": {
+                    "format": "date",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Context",
+            "type": "object"
+        },
+        "ContextType": {
+            "description": "",
+            "enum": [
+                "team",
+                "group",
+                "project",
+                "organization"
+            ],
+            "title": "ContextType",
+            "type": "string"
+        },
+        "EmploymentEvent": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "duration": {
+                    "type": "number"
+                },
+                "employed_at": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "start_date": {
+                    "format": "date",
+                    "type": "string"
+                }
+            },
+            "title": "EmploymentEvent",
+            "type": "object"
+        },
+        "Event": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "duration": {
+                    "type": "number"
+                },
+                "end_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "is_current": {
+                    "type": "boolean"
+                },
+                "start_date": {
+                    "format": "date",
+                    "type": "string"
+                }
+            },
+            "title": "Event",
+            "type": "object"
+        },
+        "GenderType": {
+            "description": "",
+            "enum": [
+                "nonbinary man",
+                "nonbinary woman",
+                "transgender woman",
+                "transgender man",
+                "cisgender man",
+                "cisgender woman"
+            ],
+            "title": "GenderType",
+            "type": "string"
+        },
+        "Interaction": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "end_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "obsoleted_by": {
+                    "type": "string"
+                },
+                "related_to": {
+                    "type": "string"
+                },
+                "start_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "title": "Interaction",
+            "type": "object"
+        },
+        "InteractionType": {
+            "description": "",
+            "enum": [
+                "collaboration",
+                "facilitating",
+                "xaas"
+            ],
+            "title": "InteractionType",
+            "type": "string"
+        },
+        "NamedThing": {
+            "additionalProperties": false,
+            "description": "A generic grouping for any identifiable entity",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "NamedThing",
+            "type": "object"
+        },
+        "Organization": {
+            "additionalProperties": false,
+            "description": "An organization such as a company or university",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "founding_date": {
+                    "type": "string"
+                },
+                "founding_location": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "mission_statement": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Organization",
+            "type": "object"
+        },
+        "Person": {
+            "additionalProperties": false,
+            "description": "A person (alive, dead, undead, or fictional).",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "birth_date": {
+                    "type": "string"
+                },
+                "current_address": {
+                    "$ref": "#/$defs/Address",
+                    "description": "The address at which a person currently lives"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "gender": {
+                    "$ref": "#/$defs/GenderType"
+                },
+                "has_employment_history": {
+                    "items": {
+                        "$ref": "#/$defs/EmploymentEvent"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "primary_email": {
+                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Person",
+            "type": "object"
+        },
+        "Place": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Place",
+            "type": "object"
+        },
+        "Role": {
+            "additionalProperties": false,
+            "description": "A set of responsibilities, skills and tasks that a person has in a context",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "role_type": {
+                    "$ref": "#/$defs/RoleType"
+                },
+                "start_date": {
+                    "format": "date",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Role",
+            "type": "object"
+        },
+        "RoleType": {
+            "description": "",
+            "enum": [
+                "permanent",
+                "enabling",
+                "temporary"
+            ],
+            "title": "RoleType",
+            "type": "string"
+        }
+    },
+    "$id": "https://pub.tech/schema/rpoc/",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "contexts": {
+            "items": {
+                "$ref": "#/$defs/Context"
+            },
+            "type": "array"
+        },
+        "organizations": {
+            "items": {
+                "$ref": "#/$defs/Organization"
+            },
+            "type": "array"
+        },
+        "persons": {
+            "items": {
+                "$ref": "#/$defs/Person"
+            },
+            "type": "array"
+        },
+        "roles": {
+            "items": {
+                "$ref": "#/$defs/Role"
+            },
+            "type": "array"
+        }
+    },
+    "title": "rpoc",
+    "type": "object",
+    "version": null
+}

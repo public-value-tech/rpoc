@@ -1,0 +1,310 @@
+@prefix GSSO: <http://purl.obolibrary.org/obo/GSSO_> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rpoc: <https://pub.tech/schema/rpoc/> .
+@prefix schema1: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rpoc:Concept a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path schema1:identifier ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path schema1:description ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path schema1:name ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path schema1:image ] ;
+    sh:targetClass rpoc:Concept .
+
+rpoc:Container a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class schema1:Person ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rpoc:persons ],
+        [ sh:class schema1:Role ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rpoc:roles ],
+        [ sh:class schema1:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rpoc:organizations ],
+        [ sh:class schema1:Project ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path rpoc:contexts ] ;
+    sh:targetClass rpoc:Container .
+
+rpoc:Event a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path prov:startedAtTime ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rpoc:duration ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path prov:endedAtTime ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rpoc:is_current ] ;
+    sh:targetClass rpoc:Event .
+
+rpoc:HasAliases a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin applied to any class that can have aliases/alternateNames" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:order 0 ;
+            sh:path rpoc:aliases ] ;
+    sh:targetClass rpoc:HasAliases .
+
+rpoc:Interaction a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path rpoc:type ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path prov:startedAtTime ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path prov:endedAtTime ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path schema1:status ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rpoc:related_to ],
+        [ sh:class schema1:Project ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path rpoc:obsoleted_by ] ;
+    sh:targetClass rpoc:Interaction .
+
+rpoc:NamedThing a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A generic grouping for any identifiable entity" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path schema1:description ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path schema1:identifier ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path schema1:name ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path schema1:image ] ;
+    sh:targetClass rpoc:NamedThing .
+
+rpoc:WithLocation a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class rpoc:Place ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rpoc:in_location ] ;
+    sh:targetClass rpoc:WithLocation .
+
+schema1:Person a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A person (alive, dead, undead, or fictional)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path schema1:description ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path schema1:email ;
+            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ],
+        [ sh:class schema1:PostalAddress ;
+            sh:description "The address at which a person currently lives" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path rpoc:current_address ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path schema1:birthDate ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path schema1:name ],
+        [ sh:order 5 ;
+            sh:path rpoc:aliases ],
+        [ sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path schema1:image ],
+        [ sh:in ( GSSO:009254 GSSO:009253 GSSO:000384 GSSO:000372 GSSO:000371 GSSO:000385 ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path schema1:gender ],
+        [ sh:class rpoc:EmploymentEvent ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path rpoc:has_employment_history ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path schema1:identifier ] ;
+    sh:targetClass schema1:Person .
+
+schema1:PostalAddress a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rpoc:city ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rpoc:postal_code ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path rpoc:street ] ;
+    sh:targetClass schema1:PostalAddress .
+
+schema1:Role a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of responsibilities, skills and tasks that a person has in a context" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path prov:startedAtTime ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path prov:endedAtTime ],
+        [ sh:order 6 ;
+            sh:path rpoc:aliases ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path schema1:identifier ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path schema1:roleName ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path schema1:description ],
+        [ sh:in ( "permanent" "enabling" "temporary" ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path rpoc:role_type ] ;
+    sh:targetClass schema1:Role .
+
+rpoc:EmploymentEvent a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path rpoc:duration ],
+        [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path rpoc:is_current ],
+        [ sh:class schema1:Organization ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rpoc:employed_at ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path prov:startedAtTime ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path prov:endedAtTime ] ;
+    sh:targetClass rpoc:EmploymentEvent .
+
+schema1:Organization a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An organization such as a company or university" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path schema1:identifier ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path rpoc:mission_statement ],
+        [ sh:order 3 ;
+            sh:path rpoc:aliases ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path schema1:description ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path schema1:image ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rpoc:founding_date ],
+        [ sh:class rpoc:Place ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path rpoc:founding_location ],
+        [ sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path schema1:name ] ;
+    sh:targetClass schema1:Organization .
+
+rpoc:Place a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path schema1:name ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path schema1:identifier ],
+        [ sh:order 2 ;
+            sh:path rpoc:aliases ] ;
+    sh:targetClass rpoc:Place .
+
+schema1:Project a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A team, group, project, or other entity that has a context for a person" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path schema1:description ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path rpoc:mission_statement ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path prov:endedAtTime ],
+        [ sh:order 5 ;
+            sh:path rpoc:aliases ],
+        [ sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path schema1:name ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path schema1:email ;
+            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ],
+        [ sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path schema1:image ],
+        [ sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path schema1:identifier ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path prov:startedAtTime ],
+        [ sh:class schema1:Project ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rpoc:parent ] ;
+    sh:targetClass schema1:Project .
+
