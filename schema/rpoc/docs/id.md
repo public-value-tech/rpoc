@@ -25,7 +25,6 @@ None &#8594;  <sub>1..1</sub> [String](types/String.md)
  * [Organization](Organization.md)
  * [Person](Person.md)
  * [Place](Place.md)
- * [Role](Role.md)
 
 ## Other properties
 

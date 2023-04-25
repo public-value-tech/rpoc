@@ -18,6 +18,7 @@ type Container
     persons: [Person]
     roles: [Role]
     contexts: [Context]
+    memberships: [Membership]
     organizations: [Organization]
   }
 
@@ -67,6 +68,15 @@ type Interaction
     obsoletedBy: Context
   }
 
+type Membership
+  {
+    person: Person
+    role: Role
+    context: Context
+    startDate: Date
+    endDate: Date
+  }
+
 type NamedThing
   {
     id: String!
@@ -110,8 +120,7 @@ type Place implements HasAliases
 
 type Role implements HasAliases
   {
-    id: String!
-    roleName: String
+    roleName: String!
     roleType: RoleType
     description: String
     startDate: Date

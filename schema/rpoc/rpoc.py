@@ -1,5 +1,5 @@
 # Auto generated from rpoc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-04-25T19:09:16
+# Generation date: 2023-04-25T19:28:22
 # Schema: rpoc
 #
 # id: https://pub.tech/schema/rpoc/
@@ -63,7 +63,7 @@ class ContextId(NamedThingId):
     pass
 
 
-class RoleId(extended_str):
+class RoleRoleName(extended_str):
     pass
 
 
@@ -245,8 +245,7 @@ class Role(YAMLRoot):
     class_name: ClassVar[str] = "Role"
     class_model_uri: ClassVar[URIRef] = RPOC.Role
 
-    id: Union[str, RoleId] = None
-    role_name: Optional[str] = None
+    role_name: Union[str, RoleRoleName] = None
     role_type: Optional[Union[str, "RoleType"]] = None
     description: Optional[str] = None
     start_date: Optional[Union[str, XSDDate]] = None
@@ -254,13 +253,10 @@ class Role(YAMLRoot):
     aliases: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, RoleId):
-            self.id = RoleId(self.id)
-
-        if self.role_name is not None and not isinstance(self.role_name, str):
-            self.role_name = str(self.role_name)
+        if self._is_empty(self.role_name):
+            self.MissingRequiredField("role_name")
+        if not isinstance(self.role_name, RoleRoleName):
+            self.role_name = RoleRoleName(self.role_name)
 
         if self.role_type is not None and not isinstance(self.role_type, RoleType):
             self.role_type = RoleType(self.role_type)
@@ -277,6 +273,43 @@ class Role(YAMLRoot):
         if not isinstance(self.aliases, list):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Membership(YAMLRoot):
+    """
+    A person's roles in a context
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = RPOC.Membership
+    class_class_curie: ClassVar[str] = "rpoc:Membership"
+    class_name: ClassVar[str] = "Membership"
+    class_model_uri: ClassVar[URIRef] = RPOC.Membership
+
+    person: Optional[Union[str, PersonId]] = None
+    role: Optional[Union[str, RoleRoleName]] = None
+    context: Optional[Union[str, ContextId]] = None
+    start_date: Optional[Union[str, XSDDate]] = None
+    end_date: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.person is not None and not isinstance(self.person, PersonId):
+            self.person = PersonId(self.person)
+
+        if self.role is not None and not isinstance(self.role, RoleRoleName):
+            self.role = RoleRoleName(self.role)
+
+        if self.context is not None and not isinstance(self.context, ContextId):
+            self.context = ContextId(self.context)
+
+        if self.start_date is not None and not isinstance(self.start_date, XSDDate):
+            self.start_date = XSDDate(self.start_date)
+
+        if self.end_date is not None and not isinstance(self.end_date, XSDDate):
+            self.end_date = XSDDate(self.end_date)
 
         super().__post_init__(**kwargs)
 
@@ -510,16 +543,21 @@ class Container(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = RPOC.Container
 
     persons: Optional[Union[Dict[Union[str, PersonId], Union[dict, Person]], List[Union[dict, Person]]]] = empty_dict()
-    roles: Optional[Union[Dict[Union[str, RoleId], Union[dict, Role]], List[Union[dict, Role]]]] = empty_dict()
+    roles: Optional[Union[Dict[Union[str, RoleRoleName], Union[dict, Role]], List[Union[dict, Role]]]] = empty_dict()
     contexts: Optional[Union[Dict[Union[str, ContextId], Union[dict, Context]], List[Union[dict, Context]]]] = empty_dict()
+    memberships: Optional[Union[Union[dict, Membership], List[Union[dict, Membership]]]] = empty_list()
     organizations: Optional[Union[Dict[Union[str, OrganizationId], Union[dict, Organization]], List[Union[dict, Organization]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="persons", slot_type=Person, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="roles", slot_type=Role, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="roles", slot_type=Role, key_name="role_name", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="contexts", slot_type=Context, key_name="id", keyed=True)
+
+        if not isinstance(self.memberships, list):
+            self.memberships = [self.memberships] if self.memberships is not None else []
+        self.memberships = [v if isinstance(v, Membership) else Membership(**as_dict(v)) for v in self.memberships]
 
         self._normalize_inlined_as_list(slot_name="organizations", slot_type=Organization, key_name="id", keyed=True)
 
@@ -675,7 +713,7 @@ slots.end_date = Slot(uri=PROV.endedAtTime, name="end_date", curie=PROV.curie('e
                    model_uri=RPOC.end_date, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.role_name = Slot(uri=SCHEMA.roleName, name="role_name", curie=SCHEMA.curie('roleName'),
-                   model_uri=RPOC.role_name, domain=None, range=Optional[str])
+                   model_uri=RPOC.role_name, domain=None, range=URIRef)
 
 slots.role_type = Slot(uri=RPOC.role_type, name="role_type", curie=RPOC.curie('role_type'),
                    model_uri=RPOC.role_type, domain=None, range=Optional[Union[str, "RoleType"]])
@@ -683,14 +721,26 @@ slots.role_type = Slot(uri=RPOC.role_type, name="role_type", curie=RPOC.curie('r
 slots.status = Slot(uri=SCHEMA.status, name="status", curie=SCHEMA.curie('status'),
                    model_uri=RPOC.status, domain=None, range=Optional[str])
 
+slots.person = Slot(uri=RPOC.person, name="person", curie=RPOC.curie('person'),
+                   model_uri=RPOC.person, domain=None, range=Optional[Union[str, PersonId]])
+
+slots.role = Slot(uri=RPOC.role, name="role", curie=RPOC.curie('role'),
+                   model_uri=RPOC.role, domain=None, range=Optional[Union[str, RoleRoleName]])
+
+slots.context = Slot(uri=RPOC.context, name="context", curie=RPOC.curie('context'),
+                   model_uri=RPOC.context, domain=None, range=Optional[Union[str, ContextId]])
+
 slots.persons = Slot(uri=RPOC.persons, name="persons", curie=RPOC.curie('persons'),
                    model_uri=RPOC.persons, domain=None, range=Optional[Union[Dict[Union[str, PersonId], Union[dict, Person]], List[Union[dict, Person]]]])
 
 slots.roles = Slot(uri=RPOC.roles, name="roles", curie=RPOC.curie('roles'),
-                   model_uri=RPOC.roles, domain=None, range=Optional[Union[Dict[Union[str, RoleId], Union[dict, Role]], List[Union[dict, Role]]]])
+                   model_uri=RPOC.roles, domain=None, range=Optional[Union[Dict[Union[str, RoleRoleName], Union[dict, Role]], List[Union[dict, Role]]]])
 
 slots.contexts = Slot(uri=RPOC.contexts, name="contexts", curie=RPOC.curie('contexts'),
                    model_uri=RPOC.contexts, domain=None, range=Optional[Union[Dict[Union[str, ContextId], Union[dict, Context]], List[Union[dict, Context]]]])
+
+slots.memberships = Slot(uri=RPOC.memberships, name="memberships", curie=RPOC.curie('memberships'),
+                   model_uri=RPOC.memberships, domain=None, range=Optional[Union[Union[dict, Membership], List[Union[dict, Membership]]]])
 
 slots.organizations = Slot(uri=RPOC.organizations, name="organizations", curie=RPOC.curie('organizations'),
                    model_uri=RPOC.organizations, domain=None, range=Optional[Union[Dict[Union[str, OrganizationId], Union[dict, Organization]], List[Union[dict, Organization]]]])

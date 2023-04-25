@@ -50,6 +50,12 @@
                     },
                     "type": "array"
                 },
+                "memberships": {
+                    "items": {
+                        "$ref": "#/$defs/Membership"
+                    },
+                    "type": "array"
+                },
                 "organizations": {
                     "items": {
                         "$ref": "#/$defs/Organization"
@@ -228,6 +234,31 @@
             "title": "InteractionType",
             "type": "string"
         },
+        "Membership": {
+            "additionalProperties": false,
+            "description": "A person's roles in a context",
+            "properties": {
+                "context": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "format": "date",
+                    "type": "string"
+                },
+                "person": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "start_date": {
+                    "format": "date",
+                    "type": "string"
+                }
+            },
+            "title": "Membership",
+            "type": "object"
+        },
         "NamedThing": {
             "additionalProperties": false,
             "description": "A generic grouping for any identifiable entity",
@@ -378,9 +409,6 @@
                     "format": "date",
                     "type": "string"
                 },
-                "id": {
-                    "type": "string"
-                },
                 "role_name": {
                     "type": "string"
                 },
@@ -393,7 +421,7 @@
                 }
             },
             "required": [
-                "id"
+                "role_name"
             ],
             "title": "Role",
             "type": "object"
@@ -417,6 +445,12 @@
         "contexts": {
             "items": {
                 "$ref": "#/$defs/Context"
+            },
+            "type": "array"
+        },
+        "memberships": {
+            "items": {
+                "$ref": "#/$defs/Membership"
             },
             "type": "array"
         },

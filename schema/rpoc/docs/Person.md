@@ -7,7 +7,7 @@ A person (alive, dead, undead, or fictional).
 URI: [rpoc:Person](https://pub.tech/schema/rpoc/Person)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[EmploymentEvent]<has_employment_history%200..*-++[Person&#124;primary_email:string%20%3F;birth_date:string%20%3F;gender:GenderType%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F;image(i):string%20%3F],[Address]<current_address%200..1-++[Person],[Container]++-%20persons%200..*>[Person],[Person]uses%20-.->[HasAliases],[NamedThing]^-[Person],[NamedThing],[HasAliases],[EmploymentEvent],[Container],[Address])](https://yuml.me/diagram/nofunky;dir:TB/class/[EmploymentEvent]<has_employment_history%200..*-++[Person&#124;primary_email:string%20%3F;birth_date:string%20%3F;gender:GenderType%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F;image(i):string%20%3F],[Address]<current_address%200..1-++[Person],[Container]++-%20persons%200..*>[Person],[Person]uses%20-.->[HasAliases],[NamedThing]^-[Person],[NamedThing],[HasAliases],[EmploymentEvent],[Container],[Address])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[EmploymentEvent]<has_employment_history%200..*-++[Person&#124;primary_email:string%20%3F;birth_date:string%20%3F;gender:GenderType%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F;image(i):string%20%3F],[Address]<current_address%200..1-++[Person],[Membership]-%20person%200..1>[Person],[Container]++-%20persons%200..*>[Person],[Person]uses%20-.->[HasAliases],[NamedThing]^-[Person],[NamedThing],[Membership],[HasAliases],[EmploymentEvent],[Container],[Address])](https://yuml.me/diagram/nofunky;dir:TB/class/[EmploymentEvent]<has_employment_history%200..*-++[Person&#124;primary_email:string%20%3F;birth_date:string%20%3F;gender:GenderType%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F;image(i):string%20%3F],[Address]<current_address%200..1-++[Person],[Membership]-%20person%200..1>[Person],[Container]++-%20persons%200..*>[Person],[Person]uses%20-.->[HasAliases],[NamedThing]^-[Person],[NamedThing],[Membership],[HasAliases],[EmploymentEvent],[Container],[Address])
 
 ## Parents
 
@@ -19,6 +19,7 @@ URI: [rpoc:Person](https://pub.tech/schema/rpoc/Person)
 
 ## Referenced by Class
 
+ *  **None** *[person](person.md)*  <sub>0..1</sub>  **[Person](Person.md)**
  *  **None** *[persons](persons.md)*  <sub>0..\*</sub>  **[Person](Person.md)**
 
 ## Attributes

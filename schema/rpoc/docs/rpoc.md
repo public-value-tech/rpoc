@@ -17,6 +17,7 @@ Information about people, their roles together with orgainsational context based
  * [Event](Event.md)
      * [EmploymentEvent](EmploymentEvent.md)
  * [Interaction](Interaction.md)
+ * [Membership](Membership.md) - A person's roles in a context
  * [NamedThing](NamedThing.md) - A generic grouping for any identifiable entity
      * [Concept](Concept.md)
      * [Context](Context.md) - A team, group, project, or other entity that has a context for a person
@@ -34,6 +35,7 @@ Information about people, their roles together with orgainsational context based
 
  * [birth_date](birth_date.md)
  * [city](city.md)
+ * [context](context.md)
  * [contexts](contexts.md)
  * [current_address](current_address.md) - The address at which a person currently lives
  * [description](description.md)
@@ -49,17 +51,20 @@ Information about people, their roles together with orgainsational context based
  * [image](image.md)
  * [in_location](in_location.md)
  * [is_current](is_current.md)
+ * [memberships](memberships.md)
  * [mission_statement](mission_statement.md)
  * [name](name.md)
  * [obsoleted_by](obsoleted_by.md)
  * [organizations](organizations.md)
  * [parent](parent.md)
+ * [person](person.md)
  * [persons](persons.md)
  * [postal_code](postal_code.md)
  * [primary_email](primary_email.md)
      * [Context➞primary_email](Context_primary_email.md)
      * [Person➞primary_email](Person_primary_email.md)
  * [related_to](related_to.md)
+ * [role](role.md)
  * [role_name](role_name.md)
  * [role_type](role_type.md)
  * [roles](roles.md)

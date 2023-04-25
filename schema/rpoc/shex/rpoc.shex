@@ -59,6 +59,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Container_tes> (  <persons> @<Person> * ;
           <roles> @<Role> * ;
           <contexts> @<Context> * ;
+          <memberships> @<Membership> * ;
           <organizations> @<Organization> *
        ) ;
        rdf:type [ <Container> ] ?
@@ -120,6 +121,17 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<Membership> CLOSED {
+    (  $<Membership_tes> (  <person> @<Person> ? ;
+          <role> @<Role> ? ;
+          <context> @<Context> ? ;
+          prov:startedAtTime @linkml:Date ? ;
+          prov:endedAtTime @linkml:Date ?
+       ) ;
+       rdf:type [ <Membership> ] ?
+    )
+}
+
 <NamedThing>  (
     CLOSED {
        (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
@@ -174,7 +186,6 @@ linkml:Nodeidentifier NONLITERAL
 <Role> CLOSED {
     (  $<Role_tes> (  &<HasAliases_tes> ;
           rdf:type [ <HasAliases> ] ? ;
-          schema1:roleName @linkml:String ? ;
           <role_type> @<RoleType> ? ;
           schema1:description @linkml:String ? ;
           prov:startedAtTime @linkml:Date ? ;

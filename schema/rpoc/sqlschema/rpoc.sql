@@ -19,8 +19,9 @@ CREATE TABLE "Container" (
 	persons TEXT, 
 	roles TEXT, 
 	contexts TEXT, 
+	memberships TEXT, 
 	organizations TEXT, 
-	PRIMARY KEY (persons, roles, contexts, organizations)
+	PRIMARY KEY (persons, roles, contexts, memberships, organizations)
 );
 
 CREATE TABLE "Context" (
@@ -72,13 +73,12 @@ CREATE TABLE "Place" (
 );
 
 CREATE TABLE "Role" (
-	id TEXT NOT NULL, 
-	role_name TEXT, 
+	role_name TEXT NOT NULL, 
 	role_type VARCHAR(9), 
 	description TEXT, 
 	start_date DATE, 
 	end_date DATE, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (role_name)
 );
 
 CREATE TABLE "Interaction" (
@@ -90,6 +90,18 @@ CREATE TABLE "Interaction" (
 	obsoleted_by TEXT, 
 	PRIMARY KEY (type, status, start_date, end_date, related_to, obsoleted_by), 
 	FOREIGN KEY(obsoleted_by) REFERENCES "Context" (id)
+);
+
+CREATE TABLE "Membership" (
+	person TEXT, 
+	role TEXT, 
+	context TEXT, 
+	start_date DATE, 
+	end_date DATE, 
+	PRIMARY KEY (person, role, context, start_date, end_date), 
+	FOREIGN KEY(person) REFERENCES "Person" (id), 
+	FOREIGN KEY(role) REFERENCES "Role" (role_name), 
+	FOREIGN KEY(context) REFERENCES "Context" (id)
 );
 
 CREATE TABLE "Organization" (
@@ -129,7 +141,7 @@ CREATE TABLE "Role_aliases" (
 	backref_id TEXT, 
 	aliases TEXT, 
 	PRIMARY KEY (backref_id, aliases), 
-	FOREIGN KEY(backref_id) REFERENCES "Role" (id)
+	FOREIGN KEY(backref_id) REFERENCES "Role" (role_name)
 );
 
 CREATE TABLE "EmploymentEvent" (

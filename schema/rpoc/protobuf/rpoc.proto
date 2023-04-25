@@ -16,6 +16,7 @@ message Container
  repeated  person persons = 0
  repeated  role roles = 0
  repeated  context contexts = 0
+ repeated  membership memberships = 0
  repeated  organization organizations = 0
  }
 // A team, group, project, or other entity that has a context for a person
@@ -55,6 +56,15 @@ message Interaction
   date endDate = 0
   string relatedTo = 0
   context obsoletedBy = 0
+ }
+// A person's roles in a context
+message Membership
+ {
+  person person = 0
+  role role = 0
+  context context = 0
+  date startDate = 0
+  date endDate = 0
  }
 // A generic grouping for any identifiable entity
 message NamedThing
@@ -99,7 +109,6 @@ message Place
 // A set of responsibilities, skills and tasks that a person has in a context
 message Role
  {
-  string id = 0
   string roleName = 0
   roleType roleType = 0
   string description = 0

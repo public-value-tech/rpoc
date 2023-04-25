@@ -23,6 +23,7 @@ None &#8594;  <sub>0..1</sub> [Date](types/Date.md)
  * [EmploymentEvent](EmploymentEvent.md)
  * [Event](Event.md)
  * [Interaction](Interaction.md)
+ * [Membership](Membership.md)
  * [Role](Role.md)
 
 ## Other properties
