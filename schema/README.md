@@ -14,6 +14,15 @@ An schema to collect/process Information about people, their roles together with
  * [data/](data) -- example data files
  * [build/](build) -- derived data files
 
+## Usage
+
+```sh
+pip install linkml
+./gen.sh
+```
+
+other installation variants are described at https://linkml.io/linkml/intro/install.html
+
 ## Schema diagram
 
 generated via `gen-yuml rpoc.yaml -f svg -d .`:

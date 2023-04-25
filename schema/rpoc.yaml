@@ -95,7 +95,6 @@ classes:
     mixins:
       - HasAliases
     slots:
-      - id
       - role_name
       - role_type
       - description
@@ -103,6 +102,20 @@ classes:
       - end_date
     in_subset:
       - basic_subset
+
+  Membership:
+    description: >-
+      A person's roles in a context
+    class_uri: rpoc:Membership
+    slots:
+      - person
+      - role
+      - context
+      - start_date
+      - end_date
+    in_subset:
+      - basic_subset
+
 
   Organization:
     description: >-
@@ -169,6 +182,7 @@ classes:
       - persons
       - roles
       - contexts
+      - memberships
       - organizations
 
 slots:
@@ -225,6 +239,7 @@ slots:
     slot_uri: prov:endedAtTime
     range: date
   role_name:
+    identifier: true
     slot_uri: schema:roleName
     range: string
   role_type:
@@ -232,8 +247,12 @@ slots:
   status:
     slot_uri: schema:status
     range: string
-
-
+  person:
+    range: Person
+  role:
+    range: Role
+  context:
+    range: Context
 
   persons:
     range: Person
@@ -247,6 +266,11 @@ slots:
     multivalued: true
   contexts:
     range: Context
+    inlined: true
+    inlined_as_list: true
+    multivalued: true
+  memberships:
+    range: Membership
     inlined: true
     inlined_as_list: true
     multivalued: true
