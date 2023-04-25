@@ -1,0 +1,314 @@
+id: https://pub.tech/schema/rpoc/
+name: rpoc
+description: |-
+  Information about people, their roles together with orgainsational context based on [schema.org](http://schema.org) and [Team Topologies](https://teamtopologies.com/).
+license: https://creativecommons.org/publicdomain/zero/1.0/
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+prefixes:
+  rpoc: https://pub.tech/schema/rpoc/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  prov: http://www.w3.org/ns/prov#
+  GSSO: http://purl.obolibrary.org/obo/GSSO_
+  # DATA PREFIXES
+  P: http://example.org/P/
+  ROR: http://example.org/ror/
+  CODE: http://example.org/code/
+  GEO: http://example.org/geoloc/
+default_prefix: rpoc
+default_range: string
+
+emit_prefixes:
+  - rdf
+  - rdfs
+  - xsd
+
+classes:
+
+  NamedThing:
+    description: >-
+      A generic grouping for any identifiable entity
+    slots:
+      - id
+      - name
+      - description
+      - image
+    close_mappings:
+     - schema:Thing
+
+  Person:
+    is_a: NamedThing
+    description: >-
+      A person (alive, dead, undead, or fictional).
+    class_uri: schema:Person
+    mixins:
+      - HasAliases
+    slots:
+      - primary_email
+      - birth_date
+      - gender
+      - current_address
+      - has_employment_history
+    slot_usage:
+      primary_email:
+        pattern: "^\\S+@[\\S+\\.]+\\S+"
+    in_subset:
+      - basic_subset
+
+  HasAliases:
+    description: >-
+      A mixin applied to any class that can have aliases/alternateNames
+    mixin: true
+    attributes:
+      aliases:
+        multivalued: true
+        exact_mappings:
+          - schema:alternateName
+
+  Context:
+    is_a: NamedThing
+    description: >-
+      A team, group, project, or other entity that has a context for a person
+    class_uri: schema:Project
+    mixins:
+      - HasAliases
+    slots:
+      - primary_email
+      - mission_statement
+      - start_date
+      - end_date
+      - parent
+    slot_usage:
+      primary_email:
+        pattern: "^\\S+@[\\S+\\.]+\\S+"
+    in_subset:
+      - basic_subset
+
+  Role:
+    description: >-
+      A set of responsibilities, skills and tasks that a person has in a context
+    class_uri: schema:Role
+    mixins:
+      - HasAliases
+    slots:
+      - id
+      - role_name
+      - role_type
+      - description
+      - start_date
+      - end_date
+    in_subset:
+      - basic_subset
+
+  Organization:
+    description: >-
+      An organization such as a company or university
+    is_a: NamedThing
+    class_uri: schema:Organization
+    mixins:
+      - HasAliases
+    slots:
+      - mission_statement
+      - founding_date
+      - founding_location
+
+  Place:
+    mixins:
+      - HasAliases
+    slots:
+      - id
+      - name
+
+  Address:
+    class_uri: schema:PostalAddress
+    slots:
+      - street
+      - city
+      - postal_code
+
+  Event:
+    slots:
+      - start_date
+      - end_date
+      - duration
+      - is_current
+    close_mappings:
+      - schema:Event
+
+  Concept:
+    is_a: NamedThing
+
+
+  Interaction:
+    slots:
+      - type
+      - status
+      - start_date
+      - end_date
+      - related_to
+      - obsoleted_by
+
+  EmploymentEvent:
+    is_a: Event
+    slots:
+      - employed_at
+
+  WithLocation:
+    mixin: true
+    slots:
+      - in_location
+
+  # TODO: annotate that this is a container/root class
+  Container:
+    tree_root: true
+    slots:
+      - persons
+      - roles
+      - contexts
+      - organizations
+
+slots:
+  id:
+    identifier: true
+    slot_uri: schema:identifier
+  name:
+    slot_uri: schema:name
+  description:
+    slot_uri: schema:description
+  image:
+    slot_uri: schema:image
+  parent:
+    range: Context
+  gender:
+    slot_uri: schema:gender
+    range: GenderType
+  primary_email:
+    slot_uri: schema:email
+  birth_date:
+    slot_uri: schema:birthDate
+  employed_at:
+    range: Organization
+  is_current:
+    range: boolean
+  has_employment_history:
+    range: EmploymentEvent
+    multivalued: true
+    inlined_as_list: true
+  in_location:
+    range: Place
+  current_address:
+    description: >-
+      The address at which a person currently lives
+    range: Address
+  related_to:
+  obsoleted_by:
+    range: Context
+  type:
+  street:
+  city:
+  mission_statement:
+  founding_date:
+  founding_location:
+    range: Place
+  postal_code:
+    range: string
+  start_date:
+    slot_uri: prov:startedAtTime
+    range: date
+  duration:
+    range: float
+  end_date:
+    slot_uri: prov:endedAtTime
+    range: date
+  role_name:
+    slot_uri: schema:roleName
+    range: string
+  role_type:
+    range: RoleType
+  status:
+    slot_uri: schema:status
+    range: string
+
+
+
+  persons:
+    range: Person
+    inlined: true
+    inlined_as_list: true
+    multivalued: true
+  roles:
+    range: Role
+    inlined: true
+    inlined_as_list: true
+    multivalued: true
+  contexts:
+    range: Context
+    inlined: true
+    inlined_as_list: true
+    multivalued: true
+  organizations:
+    range: Organization
+    inlined_as_list: true
+    inlined: true
+    multivalued: true
+
+enums:
+  ContextType:
+    permissible_values:
+      team:
+        description: >-
+          A team is a group of people working together on a project
+      group:
+        description: >-
+          A group is a collection of people with a common interest
+      project:
+        description: >-
+          A project is a temporary endeavor with a defined goal
+      organization:
+        description: >-
+          An organization is a group of people with a common purpose
+  RoleType:
+    permissible_values:
+      permanent:
+        description: >-
+          A member who is permanent part of a team or group
+      enabling:
+        description: >-
+          A enabling role is a person who helps a team or group without being a permanent member
+      temporary:
+        description: >-
+          A short lived role that is not permanent
+  InteractionType:
+    permissible_values:
+      collaboration:
+        description: >-
+          A collaboration interaction is a relationship between two contexts which work together on a project
+      facilitating:
+        description: >-
+          A facilitating interaction is a relationship between two contexts which help each other
+      xaas:
+        description: >-
+          A XaaS interaction is a relationship between two contexts where one provides a service to the other
+
+  GenderType:
+    permissible_values:
+      nonbinary man:
+        meaning: GSSO:009254
+      nonbinary woman:
+        meaning: GSSO:009253
+      transgender woman:
+        meaning: GSSO:000384
+      transgender man:
+        meaning: GSSO:000372
+      cisgender man:
+        meaning: GSSO:000371
+      cisgender woman:
+        meaning: GSSO:000385
+
+subsets:
+  basic_subset:
+    description: A subset of the schema that handles basic information
