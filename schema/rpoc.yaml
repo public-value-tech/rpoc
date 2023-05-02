@@ -152,9 +152,6 @@ classes:
     close_mappings:
       - schema:Event
 
-  Concept:
-    is_a: NamedThing
-
 
   Interaction:
     slots:
@@ -175,15 +172,7 @@ classes:
     slots:
       - in_location
 
-  # TODO: annotate that this is a container/root class
-  Container:
-    tree_root: true
-    slots:
-      - persons
-      - roles
-      - contexts
-      - memberships
-      - organizations
+
 
 slots:
   id:
