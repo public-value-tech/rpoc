@@ -1,1 +1,1 @@
-# *R*oles, *P*eoples in *o*rganisational *C*ontext 
+# *R*oles, *P*eople in *o*rganisational *C*ontext 
