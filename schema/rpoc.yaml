@@ -14,11 +14,7 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   prov: http://www.w3.org/ns/prov#
   GSSO: http://purl.obolibrary.org/obo/GSSO_
-  # DATA PREFIXES
-  P: http://example.org/P/
-  ROR: http://example.org/ror/
-  CODE: http://example.org/code/
-  GEO: http://example.org/geoloc/
+
 default_prefix: rpoc
 default_range: string
 
@@ -52,6 +48,9 @@ classes:
       - birth_date
       - gender
       - current_address
+      - position
+      - nick
+      - avatar
       - has_employment_history
     slot_usage:
       primary_email:
@@ -113,6 +112,7 @@ classes:
       - context
       - start_date
       - end_date
+      - description
     in_subset:
       - basic_subset
 
@@ -161,6 +161,7 @@ classes:
       - end_date
       - related_to
       - obsoleted_by
+      - description
 
   EmploymentEvent:
     is_a: Event
@@ -172,7 +173,9 @@ classes:
     slots:
       - in_location
 
-
+  Image:
+    slots:
+      - url
 
 slots:
   id:
@@ -180,10 +183,15 @@ slots:
     slot_uri: schema:identifier
   name:
     slot_uri: schema:name
+  nick:
+    slot_uri: schema:alternateName
   description:
     slot_uri: schema:description
   image:
     slot_uri: schema:image
+    range: Image
+  avatar:
+    range: Image
   parent:
     range: Context
   gender:
@@ -195,6 +203,9 @@ slots:
     slot_uri: schema:birthDate
   employed_at:
     range: Organization
+  company:
+    range: Organization
+  position:
   is_current:
     range: boolean
   has_employment_history:
@@ -213,6 +224,12 @@ slots:
   type:
   street:
   city:
+  website:
+    range: uri
+  url:
+    slot_uri: schema:contentUrl
+    range: uri
+
   mission_statement:
   founding_date:
   founding_location:
