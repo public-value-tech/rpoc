@@ -4,28 +4,13 @@ message Address
   string city = 0
   string postalCode = 0
  }
-message Concept
- {
-  string id = 0
-  string name = 0
-  string description = 0
-  string image = 0
- }
-message Container
- {
- repeated  person persons = 0
- repeated  role roles = 0
- repeated  context contexts = 0
- repeated  membership memberships = 0
- repeated  organization organizations = 0
- }
 // A team, group, project, or other entity that has a context for a person
 message Context
  {
   string id = 0
   string name = 0
   string description = 0
-  string image = 0
+  image image = 0
   string primaryEmail = 0
   string missionStatement = 0
   date startDate = 0
@@ -48,6 +33,10 @@ message Event
   float duration = 0
   boolean isCurrent = 0
  }
+message Image
+ {
+  uri url = 0
+ }
 message Interaction
  {
   string type = 0
@@ -56,6 +45,7 @@ message Interaction
   date endDate = 0
   string relatedTo = 0
   context obsoletedBy = 0
+  string description = 0
  }
 // A person's roles in a context
 message Membership
@@ -65,6 +55,7 @@ message Membership
   context context = 0
   date startDate = 0
   date endDate = 0
+  string description = 0
  }
 // A generic grouping for any identifiable entity
 message NamedThing
@@ -72,7 +63,7 @@ message NamedThing
   string id = 0
   string name = 0
   string description = 0
-  string image = 0
+  image image = 0
  }
 // An organization such as a company or university
 message Organization
@@ -80,7 +71,7 @@ message Organization
   string id = 0
   string name = 0
   string description = 0
-  string image = 0
+  image image = 0
   string missionStatement = 0
   string foundingDate = 0
   place foundingLocation = 0
@@ -92,11 +83,14 @@ message Person
   string id = 0
   string name = 0
   string description = 0
-  string image = 0
+  image image = 0
   string primaryEmail = 0
   string birthDate = 0
   genderType gender = 0
   address currentAddress = 0
+  string position = 0
+  string nick = 0
+  image avatar = 0
  repeated  employmentEvent hasEmploymentHistory = 0
  repeated  string aliases = 0
  }

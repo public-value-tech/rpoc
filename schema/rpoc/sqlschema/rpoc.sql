@@ -7,23 +7,6 @@ CREATE TABLE "Address" (
 	PRIMARY KEY (street, city, postal_code)
 );
 
-CREATE TABLE "Concept" (
-	id TEXT NOT NULL, 
-	name TEXT, 
-	description TEXT, 
-	image TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE "Container" (
-	persons TEXT, 
-	roles TEXT, 
-	contexts TEXT, 
-	memberships TEXT, 
-	organizations TEXT, 
-	PRIMARY KEY (persons, roles, contexts, memberships, organizations)
-);
-
 CREATE TABLE "Context" (
 	id TEXT NOT NULL, 
 	name TEXT, 
@@ -46,6 +29,11 @@ CREATE TABLE "Event" (
 	PRIMARY KEY (start_date, end_date, duration, is_current)
 );
 
+CREATE TABLE "Image" (
+	url TEXT, 
+	PRIMARY KEY (url)
+);
+
 CREATE TABLE "NamedThing" (
 	id TEXT NOT NULL, 
 	name TEXT, 
@@ -63,6 +51,9 @@ CREATE TABLE "Person" (
 	birth_date TEXT, 
 	gender VARCHAR(17), 
 	current_address TEXT, 
+	position TEXT, 
+	nick TEXT, 
+	avatar TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -88,7 +79,8 @@ CREATE TABLE "Interaction" (
 	end_date DATE, 
 	related_to TEXT, 
 	obsoleted_by TEXT, 
-	PRIMARY KEY (type, status, start_date, end_date, related_to, obsoleted_by), 
+	description TEXT, 
+	PRIMARY KEY (type, status, start_date, end_date, related_to, obsoleted_by, description), 
 	FOREIGN KEY(obsoleted_by) REFERENCES "Context" (id)
 );
 
@@ -98,7 +90,8 @@ CREATE TABLE "Membership" (
 	context TEXT, 
 	start_date DATE, 
 	end_date DATE, 
-	PRIMARY KEY (person, role, context, start_date, end_date), 
+	description TEXT, 
+	PRIMARY KEY (person, role, context, start_date, end_date, description), 
 	FOREIGN KEY(person) REFERENCES "Person" (id), 
 	FOREIGN KEY(role) REFERENCES "Role" (role_name), 
 	FOREIGN KEY(context) REFERENCES "Context" (id)

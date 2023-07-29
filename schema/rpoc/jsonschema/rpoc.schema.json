@@ -17,67 +17,6 @@
             "title": "Address",
             "type": "object"
         },
-        "Concept": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "image": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Concept",
-            "type": "object"
-        },
-        "Container": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "contexts": {
-                    "items": {
-                        "$ref": "#/$defs/Context"
-                    },
-                    "type": "array"
-                },
-                "memberships": {
-                    "items": {
-                        "$ref": "#/$defs/Membership"
-                    },
-                    "type": "array"
-                },
-                "organizations": {
-                    "items": {
-                        "$ref": "#/$defs/Organization"
-                    },
-                    "type": "array"
-                },
-                "persons": {
-                    "items": {
-                        "$ref": "#/$defs/Person"
-                    },
-                    "type": "array"
-                },
-                "roles": {
-                    "items": {
-                        "$ref": "#/$defs/Role"
-                    },
-                    "type": "array"
-                }
-            },
-            "title": "Container",
-            "type": "object"
-        },
         "Context": {
             "additionalProperties": false,
             "description": "A team, group, project, or other entity that has a context for a person",
@@ -99,7 +38,7 @@
                     "type": "string"
                 },
                 "image": {
-                    "type": "string"
+                    "$ref": "#/$defs/Image"
                 },
                 "mission_statement": {
                     "type": "string"
@@ -196,10 +135,24 @@
             "title": "GenderType",
             "type": "string"
         },
+        "Image": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "title": "Image",
+            "type": "object"
+        },
         "Interaction": {
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "description": {
+                    "type": "string"
+                },
                 "end_date": {
                     "format": "date",
                     "type": "string"
@@ -241,6 +194,9 @@
                 "context": {
                     "type": "string"
                 },
+                "description": {
+                    "type": "string"
+                },
                 "end_date": {
                     "format": "date",
                     "type": "string"
@@ -270,7 +226,7 @@
                     "type": "string"
                 },
                 "image": {
-                    "type": "string"
+                    "$ref": "#/$defs/Image"
                 },
                 "name": {
                     "type": "string"
@@ -305,7 +261,7 @@
                     "type": "string"
                 },
                 "image": {
-                    "type": "string"
+                    "$ref": "#/$defs/Image"
                 },
                 "mission_statement": {
                     "type": "string"
@@ -330,6 +286,9 @@
                     },
                     "type": "array"
                 },
+                "avatar": {
+                    "$ref": "#/$defs/Image"
+                },
                 "birth_date": {
                     "type": "string"
                 },
@@ -353,9 +312,15 @@
                     "type": "string"
                 },
                 "image": {
-                    "type": "string"
+                    "$ref": "#/$defs/Image"
                 },
                 "name": {
+                    "type": "string"
+                },
+                "nick": {
+                    "type": "string"
+                },
+                "position": {
                     "type": "string"
                 },
                 "primary_email": {
@@ -441,38 +406,6 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "properties": {
-        "contexts": {
-            "items": {
-                "$ref": "#/$defs/Context"
-            },
-            "type": "array"
-        },
-        "memberships": {
-            "items": {
-                "$ref": "#/$defs/Membership"
-            },
-            "type": "array"
-        },
-        "organizations": {
-            "items": {
-                "$ref": "#/$defs/Organization"
-            },
-            "type": "array"
-        },
-        "persons": {
-            "items": {
-                "$ref": "#/$defs/Person"
-            },
-            "type": "array"
-        },
-        "roles": {
-            "items": {
-                "$ref": "#/$defs/Role"
-            },
-            "type": "array"
-        }
-    },
     "title": "rpoc",
     "type": "object",
     "version": null

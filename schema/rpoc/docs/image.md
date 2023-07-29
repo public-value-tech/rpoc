@@ -1,33 +1,23 @@
 
-# Slot: image
+# Class: Image
 
 
 
 
-URI: [rpoc:image](https://pub.tech/schema/rpoc/image)
+URI: [rpoc:Image](https://pub.tech/schema/rpoc/Image)
 
 
-## Domain and Range
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person]++-%20avatar%200..1>[Image&#124;url:uri%20%3F],[NamedThing]++-%20image%200..1>[Image],[Person],[NamedThing])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person]++-%20avatar%200..1>[Image&#124;url:uri%20%3F],[NamedThing]++-%20image%200..1>[Image],[Person],[NamedThing])
 
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
+## Referenced by Class
 
-## Parents
+ *  **None** *[avatar](avatar.md)*  <sub>0..1</sub>  **[Image](Image.md)**
+ *  **None** *[image](image.md)*  <sub>0..1</sub>  **[Image](Image.md)**
+
+## Attributes
 
 
-## Children
+### Own
 
-
-## Used by
-
- * [Concept](Concept.md)
- * [Context](Context.md)
- * [NamedThing](NamedThing.md)
- * [Organization](Organization.md)
- * [Person](Person.md)
-
-## Other properties
-
-|  |  |  |
-| --- | --- | --- |
-| **Mappings:** | | schema:image |
-
+ * [url](url.md)  <sub>0..1</sub>
+     * Range: [Uri](types/Uri.md)

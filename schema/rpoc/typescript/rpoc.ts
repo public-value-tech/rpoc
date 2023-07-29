@@ -4,7 +4,6 @@ export type ContextId = string
 export type RoleRoleName = string
 export type OrganizationId = string
 export type PlaceId = string
-export type date = string
 /**
  * A generic grouping for any identifiable entity
  */
@@ -12,7 +11,7 @@ export interface NamedThing  {
     id?: string,
     name?: string,
     description?: string,
-    image?: string,
+    image?: Image,
 }
 /**
  * A person (alive, dead, undead, or fictional).
@@ -24,12 +23,15 @@ export interface Person  extends NamedThing, HasAliases  {
     /**
      * The address at which a person currently lives
      */current_address?: Address,
+    position?: string,
+    nick?: string,
+    avatar?: Image,
     has_employment_history?: EmploymentEvent[],
     aliases?: string,
     id?: string,
     name?: string,
     description?: string,
-    image?: string,
+    image?: Image,
 }
 /**
  * A mixin applied to any class that can have aliases/alternateNames
@@ -50,7 +52,7 @@ export interface Context  extends NamedThing, HasAliases  {
     id?: string,
     name?: string,
     description?: string,
-    image?: string,
+    image?: Image,
 }
 /**
  * A set of responsibilities, skills and tasks that a person has in a context
@@ -72,6 +74,7 @@ export interface Membership  {
     context?: ContextId,
     start_date?: date,
     end_date?: date,
+    description?: string,
 }
 /**
  * An organization such as a company or university
@@ -84,7 +87,7 @@ export interface Organization  extends NamedThing, HasAliases  {
     id?: string,
     name?: string,
     description?: string,
-    image?: string,
+    image?: Image,
 }
 
 export interface Place  extends HasAliases  {
@@ -113,6 +116,7 @@ export interface Interaction  {
     end_date?: date,
     related_to?: string,
     obsoleted_by?: ContextId,
+    description?: string,
 }
 
 export interface EmploymentEvent  extends Event  {
@@ -125,5 +129,9 @@ export interface EmploymentEvent  extends Event  {
 
 export interface WithLocation  {
     in_location?: PlaceId,
+}
+
+export interface Image  {
+    url?: string,
 }
 

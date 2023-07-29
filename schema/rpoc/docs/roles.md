@@ -19,4 +19,3 @@ None &#8594;  <sub>0..\*</sub> [Role](Role.md)
 
 ## Used by
 
- * [Container](Container.md)

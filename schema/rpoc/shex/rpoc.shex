@@ -38,31 +38,18 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
 <Address> CLOSED {
     (  $<Address_tes> (  <street> @linkml:String ? ;
           <city> @linkml:String ? ;
           <postal_code> @linkml:String ?
        ) ;
        rdf:type [ schema1:PostalAddress ] ?
-    )
-}
-
-<Concept> CLOSED {
-    (  $<Concept_tes> (  &<NamedThing_tes> ;
-          rdf:type [ <NamedThing> ] ?
-       ) ;
-       rdf:type [ <Concept> ]
-    )
-}
-
-<Container> CLOSED {
-    (  $<Container_tes> (  <persons> @<Person> * ;
-          <roles> @<Role> * ;
-          <contexts> @<Context> * ;
-          <memberships> @<Membership> * ;
-          <organizations> @<Organization> *
-       ) ;
-       rdf:type [ <Container> ] ?
     )
 }
 
@@ -109,13 +96,20 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<Image> CLOSED {
+    (  $<Image_tes> schema1:contentUrl @linkml:Uri ? ;
+       rdf:type [ <Image> ] ?
+    )
+}
+
 <Interaction> CLOSED {
     (  $<Interaction_tes> (  <type> @linkml:String ? ;
           schema1:status @linkml:String ? ;
           prov:startedAtTime @linkml:Date ? ;
           prov:endedAtTime @linkml:Date ? ;
           <related_to> @linkml:String ? ;
-          <obsoleted_by> @<Context> ?
+          <obsoleted_by> @<Context> ? ;
+          schema1:description @linkml:String ?
        ) ;
        rdf:type [ <Interaction> ] ?
     )
@@ -126,7 +120,8 @@ linkml:Nodeidentifier NONLITERAL
           <role> @<Role> ? ;
           <context> @<Context> ? ;
           prov:startedAtTime @linkml:Date ? ;
-          prov:endedAtTime @linkml:Date ?
+          prov:endedAtTime @linkml:Date ? ;
+          schema1:description @linkml:String ?
        ) ;
        rdf:type [ <Membership> ] ?
     )
@@ -136,11 +131,11 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
              schema1:description @linkml:String ? ;
-             schema1:image @linkml:String ?
+             schema1:image @<Image> ?
           ) ;
           rdf:type [ <NamedThing> ]
        )
-    } OR @<Concept> OR @<Context> OR @<Organization> OR @<Person>
+    } OR @<Context> OR @<Organization> OR @<Person>
 )
 
 <Organization> CLOSED {
@@ -166,6 +161,9 @@ linkml:Nodeidentifier NONLITERAL
           schema1:birthDate @linkml:String ? ;
           schema1:gender @<GenderType> ? ;
           <current_address> @<Address> ? ;
+          <position> @linkml:String ? ;
+          schema1:alternateName @linkml:String ? ;
+          <avatar> @<Image> ? ;
           <has_employment_history> @<EmploymentEvent> * ;
           <aliases> @linkml:String *
        ) ;

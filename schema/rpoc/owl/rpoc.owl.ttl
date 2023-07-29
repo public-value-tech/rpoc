@@ -1,5 +1,6 @@
 @prefix GSSO: <http://purl.obolibrary.org/obo/GSSO_> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -13,75 +14,87 @@
 rpoc: a owl:Ontology ;
     rdfs:label "rpoc" ;
     IAO:0000700 rpoc:Address,
-        rpoc:Container,
         rpoc:Event,
         rpoc:HasAliases,
+        rpoc:Image,
         rpoc:Interaction,
         rpoc:Membership,
         rpoc:NamedThing,
         rpoc:WithLocation ;
-    linkml:classes "{'NamedThing': ClassDefinition(name='NamedThing', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/NamedThing', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A generic grouping for any identifiable entity', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=['schema:Thing'], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['id', 'name', 'description', 'image'], slot_usage={}, attributes={}, class_uri='rpoc:NamedThing', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Person': ClassDefinition(name='Person', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Person', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A person (alive, dead, undead, or fictional).', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=['basic_subset'], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=['schema:Person'], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a='NamedThing', abstract=None, mixin=None, mixins=['HasAliases'], apply_to=[], values_from=[], string_serialization=None, slots=['id', 'name', 'description', 'image', 'Person_primary_email', 'birth_date', 'gender', 'current_address', 'has_employment_history', 'hasAliases__aliases'], slot_usage={'primary_email': SlotDefinition(name='primary_email', id_prefixes=[], definition_uri=None, local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, singular_name=None, domain=None, slot_uri=None, multivalued=None, inherited=None, readonly=None, ifabsent=None, list_elements_unique=None, list_elements_ordered=None, shared=None, key=None, identifier=None, designates_type=None, alias=None, owner=None, domain_of=[], subproperty_of=None, symmetric=None, reflexive=None, locally_reflexive=None, irreflexive=None, asymmetric=None, transitive=None, inverse=None, is_class_field=None, transitive_form_of=None, reflexive_transitive_form_of=None, role=None, is_usage_slot=None, usage_slot_name=None, relational_role=None, slot_group=None, is_grouping_slot=None, path_rule=None, disjoint_with=[], children_are_mutually_disjoint=None, union_of=[], range=None, range_expression=None, enum_range=None, required=None, recommended=None, inlined=None, inlined_as_list=None, minimum_value=None, maximum_value=None, pattern='^\\\\S+@[\\\\S+\\\\.]+\\\\S+', structured_pattern=None, unit=None, implicit_prefix=None, value_presence=None, equals_string=None, equals_string_in=[], equals_number=None, equals_expression=None, minimum_cardinality=None, maximum_cardinality=None, has_member=None, all_members=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[])}, attributes={}, class_uri='schema:Person', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'HasAliases': ClassDefinition(name='HasAliases', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/HasAliases', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A mixin applied to any class that can have aliases/alternateNames', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=True, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['hasAliases__aliases'], slot_usage={}, attributes={'aliases': SlotDefinition(name='aliases', id_prefixes=[], definition_uri=None, local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:alternateName'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, singular_name=None, domain=None, slot_uri=None, multivalued=True, inherited=None, readonly=None, ifabsent=None, list_elements_unique=None, list_elements_ordered=None, shared=None, key=None, identifier=None, designates_type=None, alias=None, owner=None, domain_of=[], subproperty_of=None, symmetric=None, reflexive=None, locally_reflexive=None, irreflexive=None, asymmetric=None, transitive=None, inverse=None, is_class_field=None, transitive_form_of=None, reflexive_transitive_form_of=None, role=None, is_usage_slot=None, usage_slot_name=None, relational_role=None, slot_group=None, is_grouping_slot=None, path_rule=None, disjoint_with=[], children_are_mutually_disjoint=None, union_of=[], range=None, range_expression=None, enum_range=None, required=None, recommended=None, inlined=None, inlined_as_list=None, minimum_value=None, maximum_value=None, pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, value_presence=None, equals_string=None, equals_string_in=[], equals_number=None, equals_expression=None, minimum_cardinality=None, maximum_cardinality=None, has_member=None, all_members=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[])}, class_uri='rpoc:HasAliases', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Context': ClassDefinition(name='Context', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Context', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A team, group, project, or other entity that has a context for a person', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=['basic_subset'], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=['schema:Project'], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a='NamedThing', abstract=None, mixin=None, mixins=['HasAliases'], apply_to=[], values_from=[], string_serialization=None, slots=['id', 'name', 'description', 'image', 'Context_primary_email', 'mission_statement', 'start_date', 'end_date', 'parent', 'hasAliases__aliases'], slot_usage={'primary_email': SlotDefinition(name='primary_email', id_prefixes=[], definition_uri=None, local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, singular_name=None, domain=None, slot_uri=None, multivalued=None, inherited=None, readonly=None, ifabsent=None, list_elements_unique=None, list_elements_ordered=None, shared=None, key=None, identifier=None, designates_type=None, alias=None, owner=None, domain_of=[], subproperty_of=None, symmetric=None, reflexive=None, locally_reflexive=None, irreflexive=None, asymmetric=None, transitive=None, inverse=None, is_class_field=None, transitive_form_of=None, reflexive_transitive_form_of=None, role=None, is_usage_slot=None, usage_slot_name=None, relational_role=None, slot_group=None, is_grouping_slot=None, path_rule=None, disjoint_with=[], children_are_mutually_disjoint=None, union_of=[], range=None, range_expression=None, enum_range=None, required=None, recommended=None, inlined=None, inlined_as_list=None, minimum_value=None, maximum_value=None, pattern='^\\\\S+@[\\\\S+\\\\.]+\\\\S+', structured_pattern=None, unit=None, implicit_prefix=None, value_presence=None, equals_string=None, equals_string_in=[], equals_number=None, equals_expression=None, minimum_cardinality=None, maximum_cardinality=None, has_member=None, all_members=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[])}, attributes={}, class_uri='schema:Project', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Role': ClassDefinition(name='Role', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Role', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A set of responsibilities, skills and tasks that a person has in a context', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=['basic_subset'], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=['schema:Role'], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=['HasAliases'], apply_to=[], values_from=[], string_serialization=None, slots=['role_name', 'role_type', 'description', 'start_date', 'end_date', 'hasAliases__aliases'], slot_usage={}, attributes={}, class_uri='schema:Role', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Membership': ClassDefinition(name='Membership', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Membership', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=\"A person's roles in a context\", alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=['basic_subset'], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=['rpoc:Membership'], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['person', 'role', 'context', 'start_date', 'end_date'], slot_usage={}, attributes={}, class_uri='rpoc:Membership', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Organization': ClassDefinition(name='Organization', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Organization', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='An organization such as a company or university', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=['schema:Organization'], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a='NamedThing', abstract=None, mixin=None, mixins=['HasAliases'], apply_to=[], values_from=[], string_serialization=None, slots=['id', 'name', 'description', 'image', 'mission_statement', 'founding_date', 'founding_location', 'hasAliases__aliases'], slot_usage={}, attributes={}, class_uri='schema:Organization', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Place': ClassDefinition(name='Place', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Place', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=['HasAliases'], apply_to=[], values_from=[], string_serialization=None, slots=['id', 'name', 'hasAliases__aliases'], slot_usage={}, attributes={}, class_uri='rpoc:Place', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Address': ClassDefinition(name='Address', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Address', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=['schema:PostalAddress'], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['street', 'city', 'postal_code'], slot_usage={}, attributes={}, class_uri='schema:PostalAddress', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Event': ClassDefinition(name='Event', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Event', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=['schema:Event'], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['start_date', 'end_date', 'duration', 'is_current'], slot_usage={}, attributes={}, class_uri='rpoc:Event', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Concept': ClassDefinition(name='Concept', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Concept', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a='NamedThing', abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['id', 'name', 'description', 'image'], slot_usage={}, attributes={}, class_uri='rpoc:Concept', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Interaction': ClassDefinition(name='Interaction', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Interaction', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['type', 'status', 'start_date', 'end_date', 'related_to', 'obsoleted_by'], slot_usage={}, attributes={}, class_uri='rpoc:Interaction', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'EmploymentEvent': ClassDefinition(name='EmploymentEvent', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/EmploymentEvent', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a='Event', abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['start_date', 'end_date', 'duration', 'is_current', 'employed_at'], slot_usage={}, attributes={}, class_uri='rpoc:EmploymentEvent', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'WithLocation': ClassDefinition(name='WithLocation', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/WithLocation', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=True, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['in_location'], slot_usage={}, attributes={}, class_uri='rpoc:WithLocation', subclass_of=None, union_of=[], defining_slots=[], tree_root=None, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={}), 'Container': ClassDefinition(name='Container', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/Container', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, slots=['persons', 'roles', 'contexts', 'memberships', 'organizations'], slot_usage={}, attributes={}, class_uri='rpoc:Container', subclass_of=None, union_of=[], defining_slots=[], tree_root=True, unique_keys={}, rules=[], classification_rules=[], slot_names_unique=None, represents_relationship=None, disjoint_with=[], children_are_mutually_disjoint=None, any_of=[], exactly_one_of=[], none_of=[], all_of=[], slot_conditions={})}" ;
-    linkml:enums "{'ContextType': EnumDefinition(name='ContextType', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/ContextType', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, enum_uri=None, code_set=None, code_set_tag=None, code_set_version=None, pv_formula=None, permissible_values={'team': PermissibleValue(text='team', description='A team is a group of people working together on a project', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'group': PermissibleValue(text='group', description='A group is a collection of people with a common interest', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'project': PermissibleValue(text='project', description='A project is a temporary endeavor with a defined goal', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'organization': PermissibleValue(text='organization', description='An organization is a group of people with a common purpose', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None)}, include=[], minus=[], inherits=[], reachable_from=None, matches=None, concepts=[]), 'RoleType': EnumDefinition(name='RoleType', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/RoleType', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, enum_uri=None, code_set=None, code_set_tag=None, code_set_version=None, pv_formula=None, permissible_values={'permanent': PermissibleValue(text='permanent', description='A member who is permanent part of a team or group', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'enabling': PermissibleValue(text='enabling', description='A enabling role is a person who helps a team or group without being a permanent member', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'temporary': PermissibleValue(text='temporary', description='A short lived role that is not permanent', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None)}, include=[], minus=[], inherits=[], reachable_from=None, matches=None, concepts=[]), 'InteractionType': EnumDefinition(name='InteractionType', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/InteractionType', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, enum_uri=None, code_set=None, code_set_tag=None, code_set_version=None, pv_formula=None, permissible_values={'collaboration': PermissibleValue(text='collaboration', description='A collaboration interaction is a relationship between two contexts which work together on a project', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'facilitating': PermissibleValue(text='facilitating', description='A facilitating interaction is a relationship between two contexts which help each other', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'xaas': PermissibleValue(text='xaas', description='A XaaS interaction is a relationship between two contexts where one provides a service to the other', meaning=None, unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None)}, include=[], minus=[], inherits=[], reachable_from=None, matches=None, concepts=[]), 'GenderType': EnumDefinition(name='GenderType', id_prefixes=[], definition_uri='https://pub.tech/schema/rpoc/GenderType', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://pub.tech/schema/rpoc/', imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, enum_uri=None, code_set=None, code_set_tag=None, code_set_version=None, pv_formula=None, permissible_values={'nonbinary man': PermissibleValue(text='nonbinary man', description=None, meaning='GSSO:009254', unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'nonbinary woman': PermissibleValue(text='nonbinary woman', description=None, meaning='GSSO:009253', unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'transgender woman': PermissibleValue(text='transgender woman', description=None, meaning='GSSO:000384', unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'transgender man': PermissibleValue(text='transgender man', description=None, meaning='GSSO:000372', unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'cisgender man': PermissibleValue(text='cisgender man', description=None, meaning='GSSO:000371', unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None), 'cisgender woman': PermissibleValue(text='cisgender woman', description=None, meaning='GSSO:000385', unit=None, is_a=None, mixins=[], extensions={}, annotations={}, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None)}, include=[], minus=[], inherits=[], reachable_from=None, matches=None, concepts=[])}" ;
-    linkml:id "https://pub.tech/schema/rpoc/" ;
-    linkml:imports "linkml:types" ;
-    linkml:types "{'string': TypeDefinition(name='string', id_prefixes=[], definition_uri='https://w3id.org/linkml/String', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A character string', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:Text'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='str', uri='xsd:string', repr=None, union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'integer': TypeDefinition(name='integer', id_prefixes=[], definition_uri='https://w3id.org/linkml/Integer', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='An integer', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:Integer'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='int', uri='xsd:integer', repr=None, union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'boolean': TypeDefinition(name='boolean', id_prefixes=[], definition_uri='https://w3id.org/linkml/Boolean', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A binary (true or false) value', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:Boolean'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='Bool', uri='xsd:boolean', repr='bool', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'float': TypeDefinition(name='float', id_prefixes=[], definition_uri='https://w3id.org/linkml/Float', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A real number that conforms to the xsd:float specification', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:Float'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='float', uri='xsd:float', repr=None, union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'double': TypeDefinition(name='double', id_prefixes=[], definition_uri='https://w3id.org/linkml/Double', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A real number that conforms to the xsd:double specification', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=['schema:Float'], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='float', uri='xsd:double', repr=None, union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'decimal': TypeDefinition(name='decimal', id_prefixes=[], definition_uri='https://w3id.org/linkml/Decimal', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A real number with arbitrary precision that conforms to the xsd:decimal specification', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=['schema:Number'], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='Decimal', uri='xsd:decimal', repr=None, union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'time': TypeDefinition(name='time', id_prefixes=[], definition_uri='https://w3id.org/linkml/Time', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A time object represents a (local) time of day, independent of any particular day', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=['URI is dateTime because OWL reasoners do not work with straight date or time'], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:Time'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='XSDTime', uri='xsd:time', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'date': TypeDefinition(name='date', id_prefixes=[], definition_uri='https://w3id.org/linkml/Date', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='a date (year, month and day) in an idealized calendar', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[\"URI is dateTime because OWL reasoners don't work with straight date or time\"], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:Date'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='XSDDate', uri='xsd:date', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'datetime': TypeDefinition(name='datetime', id_prefixes=[], definition_uri='https://w3id.org/linkml/Datetime', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='The combination of a date and time', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:DateTime'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='XSDDateTime', uri='xsd:dateTime', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'date_or_datetime': TypeDefinition(name='date_or_datetime', id_prefixes=[], definition_uri='https://w3id.org/linkml/DateOrDatetime', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='Either a date or a datetime', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='str', uri='linkml:DateOrDatetime', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'uriorcurie': TypeDefinition(name='uriorcurie', id_prefixes=[], definition_uri='https://w3id.org/linkml/Uriorcurie', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='a URI or a CURIE', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='URIorCURIE', uri='xsd:anyURI', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'curie': TypeDefinition(name='curie', id_prefixes=[], definition_uri='https://w3id.org/linkml/Curie', local_names={}, conforms_to='https://www.w3.org/TR/curie/', implements=[], extensions={}, annotations={}, description='a compact URI', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=['in RDF serializations this MUST be expanded to a URI', 'in non-RDF serializations MAY be serialized as the compact representation'], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='Curie', uri='xsd:string', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'uri': TypeDefinition(name='uri', id_prefixes=[], definition_uri='https://w3id.org/linkml/Uri', local_names={}, conforms_to='https://www.ietf.org/rfc/rfc3987.txt', implements=[], extensions={}, annotations={}, description='a complete URI', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=['in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node'], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=['schema:URL'], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='URI', uri='xsd:anyURI', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'ncname': TypeDefinition(name='ncname', id_prefixes=[], definition_uri='https://w3id.org/linkml/Ncname', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='Prefix part of CURIE', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='NCName', uri='xsd:string', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'objectidentifier': TypeDefinition(name='objectidentifier', id_prefixes=[], definition_uri='https://w3id.org/linkml/Objectidentifier', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A URI or CURIE that represents an object in the model.', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=['Used for inheritence and type checking'], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='ElementIdentifier', uri='shex:iri', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[]), 'nodeidentifier': TypeDefinition(name='nodeidentifier', id_prefixes=[], definition_uri='https://w3id.org/linkml/Nodeidentifier', local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description='A URI, CURIE or BNODE that represents a node in a model.', alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema='https://w3id.org/linkml/types', imported_from='linkml:types', source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=[], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, typeof=None, base='NodeIdentifier', uri='shex:nonLiteral', repr='str', union_of=[], pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, equals_string=None, equals_string_in=[], equals_number=None, minimum_value=None, maximum_value=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[])}" .
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    linkml:generation_date "2023-07-29T20:25:36" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "rpoc.yaml" ;
+    linkml:source_file_date "2023-07-29T20:25:20" ;
+    linkml:source_file_size 7301 .
 
-rpoc:Concept a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Concept" ;
-    rdfs:subClassOf rpoc:NamedThing ;
-    linkml:attributes "{}" ;
-    linkml:is_a "NamedThing" .
+rpoc:company a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "company" ;
+    rdfs:range rpoc:Organization .
+
+rpoc:contexts a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "contexts" ;
+    rdfs:range rpoc:Context .
+
+rpoc:memberships a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "memberships" ;
+    rdfs:range rpoc:Membership .
+
+rpoc:organizations a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "organizations" ;
+    rdfs:range rpoc:Organization .
+
+rpoc:persons a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "persons" ;
+    rdfs:range rpoc:Person .
+
+rpoc:roles a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "roles" ;
+    rdfs:range rpoc:Role .
+
+rpoc:website a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "website" ;
+    rdfs:range linkml:Uri .
 
 linkml:SubsetDefinition a owl:Class ;
-    rdfs:label "subset_definition" ;
-    linkml:attributes "{}" ;
-    linkml:is_a "element" .
+    rdfs:label "subset_definition" .
 
 linkml:TypeDefinition a owl:Class ;
-    rdfs:label "type_definition" ;
-    linkml:attributes "{}" ;
-    linkml:is_a "element" ;
-    linkml:mixins "type_expression" .
+    rdfs:label "type_definition" .
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
-
-rpoc:Container a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Container" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom rpoc:Role ;
-            owl:onProperty rpoc:roles ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rpoc:Organization ;
-            owl:onProperty rpoc:organizations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rpoc:Person ;
-            owl:onProperty rpoc:persons ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rpoc:Membership ;
-            owl:onProperty rpoc:memberships ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rpoc:Context ;
-            owl:onProperty rpoc:contexts ] ;
-    linkml:attributes "{}" .
 
 rpoc:Interaction a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Interaction" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:startedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Context ;
             owl:onProperty rpoc:obsoleted_by ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:related_to ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:type ],
+            owl:onProperty schema1:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -89,12 +102,7 @@ rpoc:Interaction a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
-            owl:onProperty prov:startedAtTime ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:related_to ] ;
-    linkml:attributes "{}" .
+            owl:onProperty prov:endedAtTime ] .
 
 rpoc:WithLocation a owl:Class,
         linkml:ClassDefinition ;
@@ -103,8 +111,12 @@ rpoc:WithLocation a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Place ;
             owl:onProperty rpoc:in_location ],
-        linkml:mixin ;
-    linkml:attributes "{}" .
+        linkml:mixin .
+
+rpoc:avatar a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "avatar" ;
+    rdfs:range rpoc:Image .
 
 rpoc:city a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -114,12 +126,8 @@ rpoc:city a owl:ObjectProperty,
 rpoc:context a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "context" ;
-    rdfs:range rpoc:Context .
-
-rpoc:contexts a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "contexts" ;
-    rdfs:range rpoc:Context .
+    rdfs:range rpoc:Context ;
+    rpoc:primary_key "True" .
 
 rpoc:current_address a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -162,20 +170,10 @@ rpoc:is_current a owl:ObjectProperty,
     rdfs:label "is_current" ;
     rdfs:range linkml:Boolean .
 
-rpoc:memberships a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "memberships" ;
-    rdfs:range rpoc:Membership .
-
 rpoc:obsoleted_by a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "obsoleted_by" ;
     rdfs:range rpoc:Context .
-
-rpoc:organizations a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "organizations" ;
-    rdfs:range rpoc:Organization .
 
 rpoc:parent a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -185,12 +183,13 @@ rpoc:parent a owl:ObjectProperty,
 rpoc:person a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "person" ;
-    rdfs:range rpoc:Person .
+    rdfs:range rpoc:Person ;
+    rpoc:primary_key "True" .
 
-rpoc:persons a owl:ObjectProperty,
+rpoc:position a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "persons" ;
-    rdfs:range rpoc:Person .
+    rdfs:label "position" ;
+    rdfs:range linkml:String .
 
 rpoc:postal_code a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -205,17 +204,13 @@ rpoc:related_to a owl:ObjectProperty,
 rpoc:role a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "role" ;
-    rdfs:range rpoc:Role .
+    rdfs:range rpoc:Role ;
+    rpoc:primary_key "True" .
 
 rpoc:role_type a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "role_type" ;
     rdfs:range rpoc:RoleType .
-
-rpoc:roles a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "roles" ;
-    rdfs:range rpoc:Role .
 
 rpoc:street a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -257,6 +252,12 @@ schema1:birthDate a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:exactMatch schema1:birthDate .
 
+schema1:contentUrl a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "url" ;
+    rdfs:range linkml:Uri ;
+    skos:exactMatch schema1:contentUrl .
+
 schema1:gender a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "gender" ;
@@ -266,7 +267,7 @@ schema1:gender a owl:ObjectProperty,
 schema1:image a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "image" ;
-    rdfs:range linkml:String ;
+    rdfs:range rpoc:Image ;
     skos:exactMatch schema1:image .
 
 schema1:roleName a owl:ObjectProperty,
@@ -304,9 +305,7 @@ rpoc:EmploymentEvent a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Organization ;
             owl:onProperty rpoc:employed_at ],
-        rpoc:Event ;
-    linkml:attributes "{}" ;
-    linkml:is_a "Event" .
+        rpoc:Event .
 
 rpoc:Event a owl:Class,
         linkml:ClassDefinition ;
@@ -314,21 +313,20 @@ rpoc:Event a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
-            owl:onProperty prov:startedAtTime ],
+            owl:onProperty prov:endedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Float ;
             owl:onProperty rpoc:duration ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty rpoc:is_current ],
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:startedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ] ;
-    skos:closeMatch schema1:Event ;
-    linkml:attributes "{}" .
+            owl:onClass linkml:Boolean ;
+            owl:onProperty rpoc:is_current ] ;
+    skos:closeMatch schema1:Event .
 
 <https://pub.tech/schema/rpoc/InteractionType#collaboration> a owl:Class,
         rpoc:InteractionType ;
@@ -359,11 +357,11 @@ rpoc:mission_statement a owl:ObjectProperty,
     rdfs:label "mission_statement" ;
     rdfs:range linkml:String .
 
-schema1:description a owl:ObjectProperty,
+schema1:alternateName a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "description" ;
+    rdfs:label "nick" ;
     rdfs:range linkml:String ;
-    skos:exactMatch schema1:description .
+    skos:exactMatch schema1:alternateName .
 
 schema1:email a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -389,7 +387,7 @@ rpoc:Address a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:postal_code ],
+            owl:onProperty rpoc:city ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -397,9 +395,8 @@ rpoc:Address a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:city ] ;
-    skos:exactMatch schema1:PostalAddress ;
-    linkml:attributes "{}" .
+            owl:onProperty rpoc:postal_code ] ;
+    skos:exactMatch schema1:PostalAddress .
 
 rpoc:InteractionType a owl:Class,
         linkml:EnumDefinition ;
@@ -409,23 +406,10 @@ rpoc:InteractionType a owl:Class,
         <https://pub.tech/schema/rpoc/InteractionType#facilitating>,
         <https://pub.tech/schema/rpoc/InteractionType#xaas> .
 
-rpoc:ContextType a owl:Class,
-        linkml:EnumDefinition ;
-    rdfs:label "ContextType" ;
-    owl:unionOf ( <https://pub.tech/schema/rpoc/ContextType#team> <https://pub.tech/schema/rpoc/ContextType#group> <https://pub.tech/schema/rpoc/ContextType#project> <https://pub.tech/schema/rpoc/ContextType#organization> ) ;
-    linkml:permissible_values <https://pub.tech/schema/rpoc/ContextType#group>,
-        <https://pub.tech/schema/rpoc/ContextType#organization>,
-        <https://pub.tech/schema/rpoc/ContextType#project>,
-        <https://pub.tech/schema/rpoc/ContextType#team> .
-
 rpoc:Membership a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Membership" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Person ;
-            owl:onProperty rpoc:person ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Context ;
             owl:onProperty rpoc:context ],
@@ -435,52 +419,48 @@ rpoc:Membership a owl:Class,
             owl:onProperty prov:endedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Role ;
-            owl:onProperty rpoc:role ],
+            owl:onClass rpoc:Person ;
+            owl:onProperty rpoc:person ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
-            owl:onProperty prov:startedAtTime ] ;
+            owl:onProperty prov:startedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:description ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Role ;
+            owl:onProperty rpoc:role ] ;
     skos:definition "A person's roles in a context" ;
-    skos:exactMatch rpoc:Membership ;
-    linkml:attributes "{}" .
-
-rpoc:Organization a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Organization" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rpoc:aliases ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Place ;
-            owl:onProperty rpoc:founding_location ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:founding_date ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:mission_statement ],
-        rpoc:HasAliases,
-        rpoc:NamedThing ;
-    skos:definition "An organization such as a company or university" ;
-    skos:exactMatch schema1:Organization ;
-    linkml:attributes "{}" ;
-    linkml:is_a "NamedThing" ;
-    linkml:mixins "HasAliases" .
+    skos:exactMatch rpoc:Membership .
 
 rpoc:Person a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty schema1:birthDate ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rpoc:aliases ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom rpoc:EmploymentEvent ;
+            owl:onProperty rpoc:has_employment_history ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:email ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:position ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:GenderType ;
+            owl:onProperty schema1:gender ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Image ;
+            owl:onProperty rpoc:avatar ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Address ;
@@ -488,55 +468,31 @@ rpoc:Person a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty schema1:email ],
+            owl:onProperty schema1:birthDate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:GenderType ;
-            owl:onProperty schema1:gender ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rpoc:EmploymentEvent ;
-            owl:onProperty rpoc:has_employment_history ],
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:alternateName ],
         rpoc:HasAliases,
         rpoc:NamedThing ;
     skos:definition "A person (alive, dead, undead, or fictional)." ;
-    skos:exactMatch schema1:Person ;
-    linkml:attributes "{}" ;
-    linkml:is_a "NamedThing" ;
-    linkml:mixins "HasAliases" .
-
-rpoc:Place a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Place" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rpoc:aliases ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty schema1:identifier ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty schema1:name ],
-        rpoc:HasAliases ;
-    linkml:attributes "{}" ;
-    linkml:mixins "HasAliases" .
+    skos:exactMatch schema1:Person .
 
 rpoc:Role a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Role" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
+            owl:onClass rpoc:RoleType ;
+            owl:onProperty rpoc:role_type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:RoleType ;
-            owl:onProperty rpoc:role_type ],
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:endedAtTime ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rpoc:aliases ],
@@ -550,9 +506,16 @@ rpoc:Role a owl:Class,
             owl:onProperty prov:startedAtTime ],
         rpoc:HasAliases ;
     skos:definition "A set of responsibilities, skills and tasks that a person has in a context" ;
-    skos:exactMatch schema1:Role ;
-    linkml:attributes "{}" ;
-    linkml:mixins "HasAliases" .
+    skos:exactMatch schema1:Role .
+
+rpoc:ContextType a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "ContextType" ;
+    owl:unionOf ( <https://pub.tech/schema/rpoc/ContextType#team> <https://pub.tech/schema/rpoc/ContextType#group> <https://pub.tech/schema/rpoc/ContextType#project> <https://pub.tech/schema/rpoc/ContextType#organization> ) ;
+    linkml:permissible_values <https://pub.tech/schema/rpoc/ContextType#group>,
+        <https://pub.tech/schema/rpoc/ContextType#organization>,
+        <https://pub.tech/schema/rpoc/ContextType#project>,
+        <https://pub.tech/schema/rpoc/ContextType#team> .
 
 rpoc:NamedThing a owl:Class,
         linkml:ClassDefinition ;
@@ -560,7 +523,51 @@ rpoc:NamedThing a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty schema1:image ],
+            owl:onProperty schema1:description ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:identifier ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Image ;
+            owl:onProperty schema1:image ] ;
+    skos:closeMatch schema1:Thing ;
+    skos:definition "A generic grouping for any identifiable entity" .
+
+rpoc:Organization a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Organization" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Place ;
+            owl:onProperty rpoc:founding_location ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:mission_statement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rpoc:aliases ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:founding_date ],
+        rpoc:HasAliases,
+        rpoc:NamedThing ;
+    skos:definition "An organization such as a company or university" ;
+    skos:exactMatch schema1:Organization .
+
+rpoc:Place a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Place" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -569,13 +576,21 @@ rpoc:NamedThing a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty schema1:identifier ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
+        rpoc:HasAliases .
+
+schema1:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    rdfs:range linkml:String ;
+    skos:exactMatch schema1:description .
+
+rpoc:Image a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Image" ;
+    rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty schema1:description ] ;
-    skos:closeMatch schema1:Thing ;
-    skos:definition "A generic grouping for any identifiable entity" ;
-    linkml:attributes "{}" .
+            owl:onClass linkml:Uri ;
+            owl:onProperty schema1:contentUrl ] .
 
 rpoc:RoleType a owl:Class,
         linkml:EnumDefinition ;
@@ -604,8 +619,7 @@ rpoc:HasAliases a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty rpoc:aliases ],
         linkml:mixin ;
-    skos:definition "A mixin applied to any class that can have aliases/alternateNames" ;
-    linkml:attributes "{'aliases': SlotDefinition(name='aliases', id_prefixes=[], definition_uri=None, local_names={}, conforms_to=None, implements=[], extensions={}, annotations={}, description=None, alt_descriptions={}, title=None, deprecated=None, todos=[], notes=[], comments=[], examples=[], in_subset=[], from_schema=None, imported_from=None, source=None, in_language=None, see_also=[], deprecated_element_has_exact_replacement=None, deprecated_element_has_possible_replacement=None, aliases=[], structured_aliases={}, mappings=[], exact_mappings=['schema:alternateName'], close_mappings=[], related_mappings=[], narrow_mappings=[], broad_mappings=[], created_by=None, created_on=None, last_updated_on=None, modified_by=None, status=None, rank=None, is_a=None, abstract=None, mixin=None, mixins=[], apply_to=[], values_from=[], string_serialization=None, singular_name=None, domain=None, slot_uri=None, multivalued=True, inherited=None, readonly=None, ifabsent=None, list_elements_unique=None, list_elements_ordered=None, shared=None, key=None, identifier=None, designates_type=None, alias=None, owner=None, domain_of=[], subproperty_of=None, symmetric=None, reflexive=None, locally_reflexive=None, irreflexive=None, asymmetric=None, transitive=None, inverse=None, is_class_field=None, transitive_form_of=None, reflexive_transitive_form_of=None, role=None, is_usage_slot=None, usage_slot_name=None, relational_role=None, slot_group=None, is_grouping_slot=None, path_rule=None, disjoint_with=[], children_are_mutually_disjoint=None, union_of=[], range=None, range_expression=None, enum_range=None, required=None, recommended=None, inlined=None, inlined_as_list=None, minimum_value=None, maximum_value=None, pattern=None, structured_pattern=None, unit=None, implicit_prefix=None, value_presence=None, equals_string=None, equals_string_in=[], equals_number=None, equals_expression=None, minimum_cardinality=None, maximum_cardinality=None, has_member=None, all_members=None, none_of=[], exactly_one_of=[], any_of=[], all_of=[])}" .
+    skos:definition "A mixin applied to any class that can have aliases/alternateNames" .
 
 rpoc:aliases a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -622,12 +636,15 @@ rpoc:Context a owl:Class,
             owl:onProperty prov:startedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:endedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Context ;
             owl:onProperty rpoc:parent ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -636,16 +653,10 @@ rpoc:Context a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty rpoc:mission_statement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rpoc:aliases ],
         rpoc:HasAliases,
         rpoc:NamedThing ;
     skos:definition "A team, group, project, or other entity that has a context for a person" ;
-    skos:exactMatch schema1:Project ;
-    linkml:attributes "{}" ;
-    linkml:is_a "NamedThing" ;
-    linkml:mixins "HasAliases" .
+    skos:exactMatch schema1:Project .
 
 rpoc:GenderType a owl:Class,
         linkml:EnumDefinition ;
@@ -659,15 +670,9 @@ rpoc:GenderType a owl:Class,
         GSSO:009254 .
 
 linkml:ClassDefinition a owl:Class ;
-    rdfs:label "class_definition" ;
-    linkml:attributes "{}" ;
-    linkml:is_a "definition" ;
-    linkml:mixins "class_expression" .
+    rdfs:label "class_definition" .
 
 linkml:SlotDefinition a owl:Class ;
-    rdfs:label "slot_definition" ;
-    linkml:attributes "{}" ;
-    linkml:is_a "definition" ;
-    linkml:mixins "slot_expression" .
+    rdfs:label "slot_definition" .
 
 

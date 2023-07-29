@@ -5,29 +5,12 @@ type Address
     postalCode: String
   }
 
-type Concept
-  {
-    id: String!
-    name: String
-    description: String
-    image: String
-  }
-
-type Container
-  {
-    persons: [Person]
-    roles: [Role]
-    contexts: [Context]
-    memberships: [Membership]
-    organizations: [Organization]
-  }
-
 type Context implements HasAliases
   {
     id: String!
     name: String
     description: String
-    image: String
+    image: Image
     primaryEmail: String
     missionStatement: String
     startDate: Date
@@ -58,6 +41,11 @@ interface HasAliases
     aliases: [String]
   }
 
+type Image
+  {
+    url: Uri
+  }
+
 type Interaction
   {
     type: String
@@ -66,6 +54,7 @@ type Interaction
     endDate: Date
     relatedTo: String
     obsoletedBy: Context
+    description: String
   }
 
 type Membership
@@ -75,6 +64,7 @@ type Membership
     context: Context
     startDate: Date
     endDate: Date
+    description: String
   }
 
 type NamedThing
@@ -82,7 +72,7 @@ type NamedThing
     id: String!
     name: String
     description: String
-    image: String
+    image: Image
   }
 
 type Organization implements HasAliases
@@ -90,7 +80,7 @@ type Organization implements HasAliases
     id: String!
     name: String
     description: String
-    image: String
+    image: Image
     missionStatement: String
     foundingDate: String
     foundingLocation: Place
@@ -102,11 +92,14 @@ type Person implements HasAliases
     id: String!
     name: String
     description: String
-    image: String
+    image: Image
     primaryEmail: String
     birthDate: String
     gender: GenderType
     currentAddress: Address
+    position: String
+    nick: String
+    avatar: Image
     hasEmploymentHistory: [EmploymentEvent]
     aliases: [String]
   }

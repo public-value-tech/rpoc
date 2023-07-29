@@ -30,22 +30,6 @@
     {
       "prefix_prefix": "GSSO",
       "prefix_reference": "http://purl.obolibrary.org/obo/GSSO_"
-    },
-    {
-      "prefix_prefix": "P",
-      "prefix_reference": "http://example.org/P/"
-    },
-    {
-      "prefix_prefix": "ROR",
-      "prefix_reference": "http://example.org/ror/"
-    },
-    {
-      "prefix_prefix": "CODE",
-      "prefix_reference": "http://example.org/code/"
-    },
-    {
-      "prefix_prefix": "GEO",
-      "prefix_reference": "http://example.org/geoloc/"
     }
   ],
   "emit_prefixes": [
@@ -267,7 +251,7 @@
       "definition_uri": "https://w3id.org/linkml/Objectidentifier",
       "description": "A URI or CURIE that represents an object in the model.",
       "comments": [
-        "Used for inheritence and type checking"
+        "Used for inheritance and type checking"
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -284,6 +268,42 @@
       "imported_from": "linkml:types",
       "base": "NodeIdentifier",
       "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
       "@type": "TypeDefinition"
     }
@@ -418,6 +438,21 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "nick",
+      "definition_uri": "https://pub.tech/schema/rpoc/nick",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/alternateName"
+      ],
+      "slot_uri": "http://schema.org/alternateName",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "description",
       "definition_uri": "https://pub.tech/schema/rpoc/description",
       "from_schema": "https://pub.tech/schema/rpoc/",
@@ -425,10 +460,12 @@
         "http://schema.org/description"
       ],
       "slot_uri": "http://schema.org/description",
-      "owner": "Role",
+      "owner": "Interaction",
       "domain_of": [
         "NamedThing",
-        "Role"
+        "Role",
+        "Membership",
+        "Interaction"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -445,7 +482,21 @@
       "domain_of": [
         "NamedThing"
       ],
-      "range": "string",
+      "range": "Image",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "avatar",
+      "definition_uri": "https://pub.tech/schema/rpoc/avatar",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/avatar",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "Image",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -516,6 +567,26 @@
         "EmploymentEvent"
       ],
       "range": "Organization",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "company",
+      "definition_uri": "https://pub.tech/schema/rpoc/company",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/company",
+      "range": "Organization",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "position",
+      "definition_uri": "https://pub.tech/schema/rpoc/position",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/position",
+      "owner": "Person",
+      "domain_of": [
+        "Person"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -629,6 +700,29 @@
         "Address"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "website",
+      "definition_uri": "https://pub.tech/schema/rpoc/website",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "slot_uri": "https://pub.tech/schema/rpoc/website",
+      "range": "uri",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "url",
+      "definition_uri": "https://pub.tech/schema/rpoc/url",
+      "from_schema": "https://pub.tech/schema/rpoc/",
+      "mappings": [
+        "http://schema.org/contentUrl"
+      ],
+      "slot_uri": "http://schema.org/contentUrl",
+      "owner": "Image",
+      "domain_of": [
+        "Image"
+      ],
+      "range": "uri",
       "@type": "SlotDefinition"
     },
     {
@@ -777,6 +871,13 @@
     {
       "name": "person",
       "definition_uri": "https://pub.tech/schema/rpoc/person",
+      "annotations": [
+        {
+          "tag": "primary_key",
+          "value": "True",
+          "@type": "Annotation"
+        }
+      ],
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/person",
       "owner": "Membership",
@@ -789,6 +890,13 @@
     {
       "name": "role",
       "definition_uri": "https://pub.tech/schema/rpoc/role",
+      "annotations": [
+        {
+          "tag": "primary_key",
+          "value": "True",
+          "@type": "Annotation"
+        }
+      ],
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/role",
       "owner": "Membership",
@@ -801,6 +909,13 @@
     {
       "name": "context",
       "definition_uri": "https://pub.tech/schema/rpoc/context",
+      "annotations": [
+        {
+          "tag": "primary_key",
+          "value": "True",
+          "@type": "Annotation"
+        }
+      ],
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/context",
       "owner": "Membership",
@@ -816,10 +931,6 @@
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/persons",
       "multivalued": true,
-      "owner": "Container",
-      "domain_of": [
-        "Container"
-      ],
       "range": "Person",
       "inlined": true,
       "inlined_as_list": true,
@@ -831,10 +942,6 @@
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/roles",
       "multivalued": true,
-      "owner": "Container",
-      "domain_of": [
-        "Container"
-      ],
       "range": "Role",
       "inlined": true,
       "inlined_as_list": true,
@@ -846,10 +953,6 @@
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/contexts",
       "multivalued": true,
-      "owner": "Container",
-      "domain_of": [
-        "Container"
-      ],
       "range": "Context",
       "inlined": true,
       "inlined_as_list": true,
@@ -861,10 +964,6 @@
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/memberships",
       "multivalued": true,
-      "owner": "Container",
-      "domain_of": [
-        "Container"
-      ],
       "range": "Membership",
       "inlined": true,
       "inlined_as_list": true,
@@ -876,10 +975,6 @@
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slot_uri": "https://pub.tech/schema/rpoc/organizations",
       "multivalued": true,
-      "owner": "Container",
-      "domain_of": [
-        "Container"
-      ],
       "range": "Organization",
       "inlined": true,
       "inlined_as_list": true,
@@ -987,6 +1082,9 @@
         "birth_date",
         "gender",
         "current_address",
+        "position",
+        "nick",
+        "avatar",
         "has_employment_history",
         "hasAliases__aliases"
       ],
@@ -1090,7 +1188,8 @@
         "role",
         "context",
         "start_date",
-        "end_date"
+        "end_date",
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pub.tech/schema/rpoc/Membership",
@@ -1172,21 +1271,6 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "Concept",
-      "definition_uri": "https://pub.tech/schema/rpoc/Concept",
-      "from_schema": "https://pub.tech/schema/rpoc/",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "image"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://pub.tech/schema/rpoc/Concept",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "Interaction",
       "definition_uri": "https://pub.tech/schema/rpoc/Interaction",
       "from_schema": "https://pub.tech/schema/rpoc/",
@@ -1196,7 +1280,8 @@
         "start_date",
         "end_date",
         "related_to",
-        "obsoleted_by"
+        "obsoleted_by",
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pub.tech/schema/rpoc/Interaction",
@@ -1231,27 +1316,22 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "Container",
-      "definition_uri": "https://pub.tech/schema/rpoc/Container",
+      "name": "Image",
+      "definition_uri": "https://pub.tech/schema/rpoc/Image",
       "from_schema": "https://pub.tech/schema/rpoc/",
       "slots": [
-        "persons",
-        "roles",
-        "contexts",
-        "memberships",
-        "organizations"
+        "url"
       ],
       "slot_usage": {},
-      "class_uri": "https://pub.tech/schema/rpoc/Container",
-      "tree_root": true,
+      "class_uri": "https://pub.tech/schema/rpoc/Image",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "rpoc.yaml",
-  "source_file_date": "2023-04-25T19:28:02",
-  "source_file_size": 7209,
-  "generation_date": "2023-04-25T19:28:08",
+  "source_file_date": "2023-07-29T20:25:20",
+  "source_file_size": 7301,
+  "generation_date": "2023-07-29T20:25:26",
   "@type": "SchemaDefinition",
   "@context": [
     "rpoc/jsonld/rpoc.context.jsonld",

@@ -13,13 +13,12 @@ Information about people, their roles together with orgainsational context based
 ### Classes
 
  * [Address](Address.md)
- * [Container](Container.md)
  * [Event](Event.md)
      * [EmploymentEvent](EmploymentEvent.md)
+ * [Image](Image.md)
  * [Interaction](Interaction.md)
  * [Membership](Membership.md) - A person's roles in a context
  * [NamedThing](NamedThing.md) - A generic grouping for any identifiable entity
-     * [Concept](Concept.md)
      * [Context](Context.md) - A team, group, project, or other entity that has a context for a person
      * [Organization](Organization.md) - An organization such as a company or university
      * [Person](Person.md) - A person (alive, dead, undead, or fictional).
@@ -33,8 +32,10 @@ Information about people, their roles together with orgainsational context based
 
 ### Slots
 
+ * [avatar](avatar.md)
  * [birth_date](birth_date.md)
  * [city](city.md)
+ * [company](company.md)
  * [context](context.md)
  * [contexts](contexts.md)
  * [current_address](current_address.md) - The address at which a person currently lives
@@ -54,11 +55,13 @@ Information about people, their roles together with orgainsational context based
  * [memberships](memberships.md)
  * [mission_statement](mission_statement.md)
  * [name](name.md)
+ * [nick](nick.md)
  * [obsoleted_by](obsoleted_by.md)
  * [organizations](organizations.md)
  * [parent](parent.md)
  * [person](person.md)
  * [persons](persons.md)
+ * [position](position.md)
  * [postal_code](postal_code.md)
  * [primary_email](primary_email.md)
      * [Context➞primary_email](Context_primary_email.md)
@@ -72,6 +75,8 @@ Information about people, their roles together with orgainsational context based
  * [status](status.md)
  * [street](street.md)
  * [type](type.md)
+ * [url](url.md)
+ * [website](website.md)
 
 ### Enums
 
@@ -115,9 +120,12 @@ Information about people, their roles together with orgainsational context based
  * [Double](types/Double.md)  (**float**)  - A real number that conforms to the xsd:double specification
  * [Float](types/Float.md)  (**float**)  - A real number that conforms to the xsd:float specification
  * [Integer](types/Integer.md)  (**int**)  - An integer
+ * [Jsonpath](types/Jsonpath.md)  (**str**)  - A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.
+ * [Jsonpointer](types/Jsonpointer.md)  (**str**)  - A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.
  * [Ncname](types/Ncname.md)  (**NCName**)  - Prefix part of CURIE
  * [Nodeidentifier](types/Nodeidentifier.md)  (**NodeIdentifier**)  - A URI, CURIE or BNODE that represents a node in a model.
  * [Objectidentifier](types/Objectidentifier.md)  (**ElementIdentifier**)  - A URI or CURIE that represents an object in the model.
+ * [Sparqlpath](types/Sparqlpath.md)  (**str**)  - A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.
  * [String](types/String.md)  (**str**)  - A character string
  * [Time](types/Time.md)  (**XSDTime**)  - A time object represents a (local) time of day, independent of any particular day
  * [Uri](types/Uri.md)  (**URI**)  - a complete URI

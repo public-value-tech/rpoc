@@ -19,7 +19,6 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 
 ## Used by
 
- * [Concept](Concept.md)
  * [Context](Context.md)
  * [NamedThing](NamedThing.md)
  * [Organization](Organization.md)

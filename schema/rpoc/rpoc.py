@@ -1,5 +1,5 @@
 # Auto generated from rpoc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-04-25T19:28:22
+# Generation date: 2023-07-29T20:25:40
 # Schema: rpoc
 #
 # id: https://pub.tech/schema/rpoc/
@@ -23,8 +23,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Date, Float, String
-from linkml_runtime.utils.metamodelcore import Bool, XSDDate
+from linkml_runtime.linkml_model.types import Boolean, Date, Float, String, Uri
+from linkml_runtime.utils.metamodelcore import Bool, URI, XSDDate
 
 metamodel_version = "1.7.0"
 version = None
@@ -33,11 +33,7 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-CODE = CurieNamespace('CODE', 'http://example.org/code/')
-GEO = CurieNamespace('GEO', 'http://example.org/geoloc/')
 GSSO = CurieNamespace('GSSO', 'http://purl.obolibrary.org/obo/GSSO_')
-P = CurieNamespace('P', 'http://example.org/P/')
-ROR = CurieNamespace('ROR', 'http://example.org/ror/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
@@ -75,10 +71,6 @@ class PlaceId(extended_str):
     pass
 
 
-class ConceptId(NamedThingId):
-    pass
-
-
 @dataclass
 class NamedThing(YAMLRoot):
     """
@@ -94,7 +86,7 @@ class NamedThing(YAMLRoot):
     id: Union[str, NamedThingId] = None
     name: Optional[str] = None
     description: Optional[str] = None
-    image: Optional[str] = None
+    image: Optional[Union[dict, "Image"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -108,8 +100,8 @@ class NamedThing(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.image is not None and not isinstance(self.image, str):
-            self.image = str(self.image)
+        if self.image is not None and not isinstance(self.image, Image):
+            self.image = Image(**as_dict(self.image))
 
         super().__post_init__(**kwargs)
 
@@ -131,6 +123,9 @@ class Person(NamedThing):
     birth_date: Optional[str] = None
     gender: Optional[Union[str, "GenderType"]] = None
     current_address: Optional[Union[dict, "Address"]] = None
+    position: Optional[str] = None
+    nick: Optional[str] = None
+    avatar: Optional[Union[dict, "Image"]] = None
     has_employment_history: Optional[Union[Union[dict, "EmploymentEvent"], List[Union[dict, "EmploymentEvent"]]]] = empty_list()
     aliases: Optional[Union[str, List[str]]] = empty_list()
 
@@ -151,6 +146,15 @@ class Person(NamedThing):
 
         if self.current_address is not None and not isinstance(self.current_address, Address):
             self.current_address = Address(**as_dict(self.current_address))
+
+        if self.position is not None and not isinstance(self.position, str):
+            self.position = str(self.position)
+
+        if self.nick is not None and not isinstance(self.nick, str):
+            self.nick = str(self.nick)
+
+        if self.avatar is not None and not isinstance(self.avatar, Image):
+            self.avatar = Image(**as_dict(self.avatar))
 
         if not isinstance(self.has_employment_history, list):
             self.has_employment_history = [self.has_employment_history] if self.has_employment_history is not None else []
@@ -294,6 +298,7 @@ class Membership(YAMLRoot):
     context: Optional[Union[str, ContextId]] = None
     start_date: Optional[Union[str, XSDDate]] = None
     end_date: Optional[Union[str, XSDDate]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.person is not None and not isinstance(self.person, PersonId):
@@ -310,6 +315,9 @@ class Membership(YAMLRoot):
 
         if self.end_date is not None and not isinstance(self.end_date, XSDDate):
             self.end_date = XSDDate(self.end_date)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
@@ -440,26 +448,6 @@ class Event(YAMLRoot):
 
 
 @dataclass
-class Concept(NamedThing):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = RPOC.Concept
-    class_class_curie: ClassVar[str] = "rpoc:Concept"
-    class_name: ClassVar[str] = "Concept"
-    class_model_uri: ClassVar[URIRef] = RPOC.Concept
-
-    id: Union[str, ConceptId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ConceptId):
-            self.id = ConceptId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class Interaction(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -474,6 +462,7 @@ class Interaction(YAMLRoot):
     end_date: Optional[Union[str, XSDDate]] = None
     related_to: Optional[str] = None
     obsoleted_by: Optional[Union[str, ContextId]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.type is not None and not isinstance(self.type, str):
@@ -493,6 +482,9 @@ class Interaction(YAMLRoot):
 
         if self.obsoleted_by is not None and not isinstance(self.obsoleted_by, ContextId):
             self.obsoleted_by = ContextId(self.obsoleted_by)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
@@ -534,32 +526,19 @@ class WithLocation(YAMLRoot):
 
 
 @dataclass
-class Container(YAMLRoot):
+class Image(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = RPOC.Container
-    class_class_curie: ClassVar[str] = "rpoc:Container"
-    class_name: ClassVar[str] = "Container"
-    class_model_uri: ClassVar[URIRef] = RPOC.Container
+    class_class_uri: ClassVar[URIRef] = RPOC.Image
+    class_class_curie: ClassVar[str] = "rpoc:Image"
+    class_name: ClassVar[str] = "Image"
+    class_model_uri: ClassVar[URIRef] = RPOC.Image
 
-    persons: Optional[Union[Dict[Union[str, PersonId], Union[dict, Person]], List[Union[dict, Person]]]] = empty_dict()
-    roles: Optional[Union[Dict[Union[str, RoleRoleName], Union[dict, Role]], List[Union[dict, Role]]]] = empty_dict()
-    contexts: Optional[Union[Dict[Union[str, ContextId], Union[dict, Context]], List[Union[dict, Context]]]] = empty_dict()
-    memberships: Optional[Union[Union[dict, Membership], List[Union[dict, Membership]]]] = empty_list()
-    organizations: Optional[Union[Dict[Union[str, OrganizationId], Union[dict, Organization]], List[Union[dict, Organization]]]] = empty_dict()
+    url: Optional[Union[str, URI]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="persons", slot_type=Person, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="roles", slot_type=Role, key_name="role_name", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="contexts", slot_type=Context, key_name="id", keyed=True)
-
-        if not isinstance(self.memberships, list):
-            self.memberships = [self.memberships] if self.memberships is not None else []
-        self.memberships = [v if isinstance(v, Membership) else Membership(**as_dict(v)) for v in self.memberships]
-
-        self._normalize_inlined_as_list(slot_name="organizations", slot_type=Organization, key_name="id", keyed=True)
+        if self.url is not None and not isinstance(self.url, URI):
+            self.url = URI(self.url)
 
         super().__post_init__(**kwargs)
 
@@ -643,11 +622,17 @@ slots.id = Slot(uri=SCHEMA.identifier, name="id", curie=SCHEMA.curie('identifier
 slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
                    model_uri=RPOC.name, domain=None, range=Optional[str])
 
+slots.nick = Slot(uri=SCHEMA.alternateName, name="nick", curie=SCHEMA.curie('alternateName'),
+                   model_uri=RPOC.nick, domain=None, range=Optional[str])
+
 slots.description = Slot(uri=SCHEMA.description, name="description", curie=SCHEMA.curie('description'),
                    model_uri=RPOC.description, domain=None, range=Optional[str])
 
 slots.image = Slot(uri=SCHEMA.image, name="image", curie=SCHEMA.curie('image'),
-                   model_uri=RPOC.image, domain=None, range=Optional[str])
+                   model_uri=RPOC.image, domain=None, range=Optional[Union[dict, Image]])
+
+slots.avatar = Slot(uri=RPOC.avatar, name="avatar", curie=RPOC.curie('avatar'),
+                   model_uri=RPOC.avatar, domain=None, range=Optional[Union[dict, Image]])
 
 slots.parent = Slot(uri=RPOC.parent, name="parent", curie=RPOC.curie('parent'),
                    model_uri=RPOC.parent, domain=None, range=Optional[Union[str, ContextId]])
@@ -663,6 +648,12 @@ slots.birth_date = Slot(uri=SCHEMA.birthDate, name="birth_date", curie=SCHEMA.cu
 
 slots.employed_at = Slot(uri=RPOC.employed_at, name="employed_at", curie=RPOC.curie('employed_at'),
                    model_uri=RPOC.employed_at, domain=None, range=Optional[Union[str, OrganizationId]])
+
+slots.company = Slot(uri=RPOC.company, name="company", curie=RPOC.curie('company'),
+                   model_uri=RPOC.company, domain=None, range=Optional[Union[str, OrganizationId]])
+
+slots.position = Slot(uri=RPOC.position, name="position", curie=RPOC.curie('position'),
+                   model_uri=RPOC.position, domain=None, range=Optional[str])
 
 slots.is_current = Slot(uri=RPOC.is_current, name="is_current", curie=RPOC.curie('is_current'),
                    model_uri=RPOC.is_current, domain=None, range=Optional[Union[bool, Bool]])
@@ -690,6 +681,12 @@ slots.street = Slot(uri=RPOC.street, name="street", curie=RPOC.curie('street'),
 
 slots.city = Slot(uri=RPOC.city, name="city", curie=RPOC.curie('city'),
                    model_uri=RPOC.city, domain=None, range=Optional[str])
+
+slots.website = Slot(uri=RPOC.website, name="website", curie=RPOC.curie('website'),
+                   model_uri=RPOC.website, domain=None, range=Optional[Union[str, URI]])
+
+slots.url = Slot(uri=SCHEMA.contentUrl, name="url", curie=SCHEMA.curie('contentUrl'),
+                   model_uri=RPOC.url, domain=None, range=Optional[Union[str, URI]])
 
 slots.mission_statement = Slot(uri=RPOC.mission_statement, name="mission_statement", curie=RPOC.curie('mission_statement'),
                    model_uri=RPOC.mission_statement, domain=None, range=Optional[str])

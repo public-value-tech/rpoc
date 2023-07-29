@@ -19,4 +19,3 @@ None &#8594;  <sub>0..\*</sub> [Membership](Membership.md)
 
 ## Used by
 
- * [Container](Container.md)

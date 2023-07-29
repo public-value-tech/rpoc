@@ -7,7 +7,7 @@
 URI: [rpoc:Interaction](https://pub.tech/schema/rpoc/Interaction)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Context]<obsoleted_by%200..1-%20[Interaction&#124;type:string%20%3F;status:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;related_to:string%20%3F],[Context])](https://yuml.me/diagram/nofunky;dir:TB/class/[Context]<obsoleted_by%200..1-%20[Interaction&#124;type:string%20%3F;status:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;related_to:string%20%3F],[Context])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Context]<obsoleted_by%200..1-%20[Interaction&#124;type:string%20%3F;status:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;related_to:string%20%3F;description:string%20%3F],[Context])](https://yuml.me/diagram/nofunky;dir:TB/class/[Context]<obsoleted_by%200..1-%20[Interaction&#124;type:string%20%3F;status:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;related_to:string%20%3F;description:string%20%3F],[Context])
 
 ## Attributes
 
@@ -26,3 +26,5 @@ URI: [rpoc:Interaction](https://pub.tech/schema/rpoc/Interaction)
      * Range: [String](types/String.md)
  * [obsoleted_by](obsoleted_by.md)  <sub>0..1</sub>
      * Range: [Context](Context.md)
+ * [description](description.md)  <sub>0..1</sub>
+     * Range: [String](types/String.md)
