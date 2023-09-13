@@ -13,7 +13,6 @@ prefixes:
   schema: http://schema.org/
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   prov: http://www.w3.org/ns/prov#
-  GSSO: http://purl.obolibrary.org/obo/GSSO_
 
 default_prefix: rpoc
 default_range: string
@@ -196,7 +195,6 @@ slots:
     range: Context
   gender:
     slot_uri: schema:gender
-    range: GenderType
   primary_email:
     slot_uri: schema:email
   birth_date:
@@ -323,21 +321,6 @@ enums:
       xaas:
         description: >-
           A XaaS interaction is a relationship between two contexts where one provides a service to the other
-
-  GenderType:
-    permissible_values:
-      nonbinary man:
-        meaning: GSSO:009254
-      nonbinary woman:
-        meaning: GSSO:009253
-      transgender woman:
-        meaning: GSSO:000384
-      transgender man:
-        meaning: GSSO:000372
-      cisgender man:
-        meaning: GSSO:000371
-      cisgender woman:
-        meaning: GSSO:000385
 
 subsets:
   basic_subset:
