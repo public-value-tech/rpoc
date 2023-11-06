@@ -5,6 +5,8 @@ export type RoleRoleName = string;
 export type OrganizationId = string;
 export type PlaceId = string;
 
+export type date = string;
+
 export enum ContextType {
 
     /** A team is a group of people working together on a project */
@@ -52,21 +54,19 @@ export interface NamedThing {
  * A person (alive, dead, undead, or fictional).
  */
 export interface Person extends NamedThing, HasAliases {
+    id: string,
+    name?: string,
+    aliases?: string[],
+    position?: string,
+    nick?: string,
+    description?: string,
+    image?: Image,
     primary_email?: string,
     birth_date?: string,
     gender?: string,
-    /** The address at which a person currently lives */
-    current_address?: Address,
-    position?: string,
-    nick?: string,
     avatar?: Image,
     has_employment_history?: EmploymentEvent[],
-    aliases?: string[],
-    id: string,
-    name?: string,
-    description?: string,
-    image?: Image,
-};
+}
 /**
  * A mixin applied to any class that can have aliases/alternateNames
  */
@@ -77,15 +77,15 @@ export interface HasAliases {
  * A team, group, project, or other entity that has a context for a person
  */
 export interface Context extends NamedThing, HasAliases {
+    id: string,
+    name?: string,
+    aliases?: string[],
+    purpose_statement?: string,
+    description?: string,
     primary_email?: string,
-    mission_statement?: string,
     start_date?: date,
     end_date?: date,
     parent?: ContextId,
-    aliases?: string[],
-    id: string,
-    name?: string,
-    description?: string,
     image?: Image,
 };
 /**
@@ -114,11 +114,11 @@ export interface Membership {
  * An organization such as a company or university
  */
 export interface Organization extends NamedThing, HasAliases {
+    id: string,
     mission_statement?: string,
     founding_date?: string,
     founding_location?: PlaceId,
     aliases?: string[],
-    id: string,
     name?: string,
     description?: string,
     image?: Image,

@@ -43,12 +43,14 @@ classes:
     mixins:
       - HasAliases
     slots:
+      - id
       - primary_email
+      - name
+      - nick
+      - position
       - birth_date
       - gender
-      - current_address
-      - position
-      - nick
+      # - current_address
       - avatar
       - has_employment_history
     slot_usage:
@@ -76,7 +78,7 @@ classes:
       - HasAliases
     slots:
       - primary_email
-      - mission_statement
+      - purpose_statement
       - start_date
       - end_date
       - parent
