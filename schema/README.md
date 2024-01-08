@@ -1,8 +1,8 @@
 # rpoc Schema
 
-This schema was initialy based on https://github.com/linkml/linkml/tree/main/examples/PersonSchema
+An schema to collect/process information about people, their roles together with orgainsational context based on [schema.org](http://schema.org), [Team Topologies](https://teamtopologies.com/) and [LinkML](https://linkml.io). For other examples, see the [linkml-registry](https://linkml.io/linkml-registry/registry/)
 
-An schema to collect/process Information about people, their roles together with orgainsational context based on [schema.org](http://schema.org), [Team Topologies](https://teamtopologies.com/) and [LinkML](https://linkml.io). For other examples, see the [linkml-registry](https://linkml.io/linkml-registry/registry/)
+This schema was initialy based on https://github.com/linkml/linkml/tree/main/examples/PersonSchema
 
  * [rpoc.yaml](rpoc.yaml) -- schema source
  * [rpoc/](rpoc) -- derived files, created with `gen-project`
