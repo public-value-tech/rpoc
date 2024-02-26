@@ -59,7 +59,7 @@ linkml:Sparqlpath xsd:string
           &<HasAliases_tes> ;
           rdf:type [ <HasAliases> ] ? ;
           schema1:email @linkml:String ? ;
-          <mission_statement> @linkml:String ? ;
+          <purpose_statement> @linkml:String ? ;
           prov:startedAtTime @linkml:Date ? ;
           prov:endedAtTime @linkml:Date ? ;
           <parent> @<Context> ? ;
@@ -121,6 +121,7 @@ linkml:Sparqlpath xsd:string
           <context> @<Context> ? ;
           prov:startedAtTime @linkml:Date ? ;
           prov:endedAtTime @linkml:Date ? ;
+          schema1:status @linkml:String ? ;
           schema1:description @linkml:String ?
        ) ;
        rdf:type [ <Membership> ] ?
@@ -188,6 +189,7 @@ linkml:Sparqlpath xsd:string
           schema1:description @linkml:String ? ;
           prov:startedAtTime @linkml:Date ? ;
           prov:endedAtTime @linkml:Date ? ;
+          schema1:status @linkml:String ? ;
           <aliases> @linkml:String *
        ) ;
        rdf:type [ schema1:Role ]

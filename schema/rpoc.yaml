@@ -16,6 +16,9 @@ prefixes:
 
 default_prefix: rpoc
 default_range: string
+types:
+  Url:
+    typeof: string
 
 emit_prefixes:
   - rdf
@@ -44,6 +47,7 @@ classes:
       - HasAliases
     slots:
       - id
+      - alternate_ids
       - primary_email
       - name
       - nick
@@ -100,6 +104,7 @@ classes:
       - description
       - start_date
       - end_date
+      - status
     in_subset:
       - basic_subset
 
@@ -113,6 +118,7 @@ classes:
       - context
       - start_date
       - end_date
+      - status
       - description
     in_subset:
       - basic_subset
@@ -182,6 +188,9 @@ slots:
   id:
     identifier: true
     slot_uri: schema:identifier
+  alternate_ids:
+    slot_uri: schema:identifier
+    multivalued: true
   name:
     slot_uri: schema:name
   nick:
@@ -225,12 +234,14 @@ slots:
   street:
   city:
   website:
-    range: uri
+    slot_uri: foaf:homepage
+  #  range: Url
   url:
     slot_uri: schema:contentUrl
-    range: uri
+  #  range: Url
 
   mission_statement:
+  purpose_statement:
   founding_date:
   founding_location:
     range: Place

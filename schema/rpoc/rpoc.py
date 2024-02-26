@@ -203,7 +203,7 @@ class Context(NamedThing):
 
     id: Union[str, ContextId] = None
     primary_email: Optional[str] = None
-    mission_statement: Optional[str] = None
+    purpose_statement: Optional[str] = None
     start_date: Optional[Union[str, XSDDate]] = None
     end_date: Optional[Union[str, XSDDate]] = None
     parent: Optional[Union[str, ContextId]] = None
@@ -218,8 +218,8 @@ class Context(NamedThing):
         if self.primary_email is not None and not isinstance(self.primary_email, str):
             self.primary_email = str(self.primary_email)
 
-        if self.mission_statement is not None and not isinstance(self.mission_statement, str):
-            self.mission_statement = str(self.mission_statement)
+        if self.purpose_statement is not None and not isinstance(self.purpose_statement, str):
+            self.purpose_statement = str(self.purpose_statement)
 
         if self.start_date is not None and not isinstance(self.start_date, XSDDate):
             self.start_date = XSDDate(self.start_date)
@@ -254,6 +254,7 @@ class Role(YAMLRoot):
     description: Optional[str] = None
     start_date: Optional[Union[str, XSDDate]] = None
     end_date: Optional[Union[str, XSDDate]] = None
+    status: Optional[str] = None
     aliases: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -273,6 +274,9 @@ class Role(YAMLRoot):
 
         if self.end_date is not None and not isinstance(self.end_date, XSDDate):
             self.end_date = XSDDate(self.end_date)
+
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if not isinstance(self.aliases, list):
             self.aliases = [self.aliases] if self.aliases is not None else []
@@ -298,6 +302,7 @@ class Membership(YAMLRoot):
     context: Optional[Union[str, ContextId]] = None
     start_date: Optional[Union[str, XSDDate]] = None
     end_date: Optional[Union[str, XSDDate]] = None
+    status: Optional[str] = None
     description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -315,6 +320,9 @@ class Membership(YAMLRoot):
 
         if self.end_date is not None and not isinstance(self.end_date, XSDDate):
             self.end_date = XSDDate(self.end_date)
+
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -690,6 +698,9 @@ slots.url = Slot(uri=SCHEMA.contentUrl, name="url", curie=SCHEMA.curie('contentU
 
 slots.mission_statement = Slot(uri=RPOC.mission_statement, name="mission_statement", curie=RPOC.curie('mission_statement'),
                    model_uri=RPOC.mission_statement, domain=None, range=Optional[str])
+
+slots.purpose_statement = Slot(uri=RPOC.purpose_statement, name="purpose_statement", curie=RPOC.curie('purpose_statement'),
+                   model_uri=RPOC.purpose_statement, domain=None, range=Optional[str])
 
 slots.founding_date = Slot(uri=RPOC.founding_date, name="founding_date", curie=RPOC.curie('founding_date'),
                    model_uri=RPOC.founding_date, domain=None, range=Optional[str])

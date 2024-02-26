@@ -55,12 +55,12 @@ export interface NamedThing {
  */
 export interface Person extends NamedThing, HasAliases {
     id: string,
+    alternate_ids?: string[],
     name?: string,
     aliases?: string[],
     position?: string,
     nick?: string,
     description?: string,
-    image?: Image,
     primary_email?: string,
     birth_date?: string,
     gender?: string,
@@ -98,7 +98,8 @@ export interface Role extends HasAliases {
     start_date?: date,
     end_date?: date,
     aliases?: string[],
-};
+    status?: string,
+}
 /**
  * A person's roles in a context
  */
@@ -108,6 +109,7 @@ export interface Membership {
     context?: ContextId,
     start_date?: date,
     end_date?: date,
+    status?: string,
     description?: string,
 };
 /**

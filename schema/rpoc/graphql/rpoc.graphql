@@ -12,7 +12,7 @@ type Context implements HasAliases
     description: String
     image: Image
     primaryEmail: String
-    missionStatement: String
+    purposeStatement: String
     startDate: Date
     endDate: Date
     parent: Context
@@ -64,6 +64,7 @@ type Membership
     context: Context
     startDate: Date
     endDate: Date
+    status: String
     description: String
   }
 
@@ -118,6 +119,7 @@ type Role implements HasAliases
     description: String
     startDate: Date
     endDate: Date
+    status: String
     aliases: [String]
   }
 

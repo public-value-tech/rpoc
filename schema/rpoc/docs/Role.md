@@ -33,6 +33,8 @@ URI: [rpoc:Role](https://pub.tech/schema/rpoc/Role)
      * Range: [Date](types/Date.md)
  * [end_date](end_date.md)  <sub>0..1</sub>
      * Range: [Date](types/Date.md)
+ * [status](status.md)  <sub>0..1</sub>
+     * Range: [String](types/String.md)
 
 ### Mixed in from HasAliases:
 

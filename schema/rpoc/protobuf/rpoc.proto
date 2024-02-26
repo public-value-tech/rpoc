@@ -12,7 +12,7 @@ message Context
   string description = 0
   image image = 0
   string primaryEmail = 0
-  string missionStatement = 0
+  string purposeStatement = 0
   date startDate = 0
   date endDate = 0
   context parent = 0
@@ -55,6 +55,7 @@ message Membership
   context context = 0
   date startDate = 0
   date endDate = 0
+  string status = 0
   string description = 0
  }
 // A generic grouping for any identifiable entity
@@ -108,5 +109,6 @@ message Role
   string description = 0
   date startDate = 0
   date endDate = 0
+  string status = 0
  repeated  string aliases = 0
  }

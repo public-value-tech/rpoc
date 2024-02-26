@@ -7,7 +7,7 @@ A team, group, project, or other entity that has a context for a person
 URI: [rpoc:Context](https://pub.tech/schema/rpoc/Context)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Image],[HasAliases],[Context]<parent%200..1-%20[Context&#124;primary_email:string%20%3F;mission_statement:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F],[Membership]-%20context%200..1>[Context],[Interaction]-%20obsoleted_by%200..1>[Context],[Context]uses%20-.->[HasAliases],[NamedThing]^-[Context],[Membership],[Interaction])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Image],[HasAliases],[Context]<parent%200..1-%20[Context&#124;primary_email:string%20%3F;mission_statement:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F],[Membership]-%20context%200..1>[Context],[Interaction]-%20obsoleted_by%200..1>[Context],[Context]uses%20-.->[HasAliases],[NamedThing]^-[Context],[Membership],[Interaction])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Image],[HasAliases],[Context]<parent%200..1-%20[Context&#124;primary_email:string%20%3F;purpose_statement:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F],[Membership]-%20context%200..1>[Context],[Interaction]-%20obsoleted_by%200..1>[Context],[Context]uses%20-.->[HasAliases],[NamedThing]^-[Context],[Membership],[Interaction])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Image],[HasAliases],[Context]<parent%200..1-%20[Context&#124;primary_email:string%20%3F;purpose_statement:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;aliases:string%20*;id(i):string;name(i):string%20%3F;description(i):string%20%3F],[Membership]-%20context%200..1>[Context],[Interaction]-%20obsoleted_by%200..1>[Context],[Context]uses%20-.->[HasAliases],[NamedThing]^-[Context],[Membership],[Interaction])
 
 ## Parents
 
@@ -31,7 +31,7 @@ URI: [rpoc:Context](https://pub.tech/schema/rpoc/Context)
 
  * [Context➞primary_email](Context_primary_email.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
- * [mission_statement](mission_statement.md)  <sub>0..1</sub>
+ * [purpose_statement](purpose_statement.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
  * [start_date](start_date.md)  <sub>0..1</sub>
      * Range: [Date](types/Date.md)

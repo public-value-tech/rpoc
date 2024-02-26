@@ -13,7 +13,7 @@ CREATE TABLE "Context" (
 	description TEXT, 
 	image TEXT, 
 	primary_email TEXT, 
-	mission_statement TEXT, 
+	purpose_statement TEXT, 
 	start_date DATE, 
 	end_date DATE, 
 	parent TEXT, 
@@ -69,6 +69,7 @@ CREATE TABLE "Role" (
 	description TEXT, 
 	start_date DATE, 
 	end_date DATE, 
+	status TEXT, 
 	PRIMARY KEY (role_name)
 );
 
@@ -90,6 +91,7 @@ CREATE TABLE "Membership" (
 	context TEXT, 
 	start_date DATE, 
 	end_date DATE, 
+	status TEXT, 
 	description TEXT, 
 	PRIMARY KEY (person, role, context, start_date, end_date, description), 
 	FOREIGN KEY(person) REFERENCES "Person" (id), 

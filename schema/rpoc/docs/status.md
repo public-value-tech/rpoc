@@ -20,6 +20,8 @@ None &#8594;  <sub>0..1</sub> [String](types/String.md)
 ## Used by
 
  * [Interaction](Interaction.md)
+ * [Membership](Membership.md)
+ * [Role](Role.md)
 
 ## Other properties
 

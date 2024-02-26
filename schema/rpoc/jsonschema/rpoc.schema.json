@@ -40,9 +40,6 @@
                 "image": {
                     "$ref": "#/$defs/Image"
                 },
-                "mission_statement": {
-                    "type": "string"
-                },
                 "name": {
                     "type": "string"
                 },
@@ -51,6 +48,9 @@
                 },
                 "primary_email": {
                     "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                    "type": "string"
+                },
+                "purpose_statement": {
                     "type": "string"
                 },
                 "start_date": {
@@ -209,6 +209,9 @@
                 },
                 "start_date": {
                     "format": "date",
+                    "type": "string"
+                },
+                "status": {
                     "type": "string"
                 }
             },
@@ -382,6 +385,9 @@
                 },
                 "start_date": {
                     "format": "date",
+                    "type": "string"
+                },
+                "status": {
                     "type": "string"
                 }
             },
