@@ -122,19 +122,6 @@
             "title": "Event",
             "type": "object"
         },
-        "GenderType": {
-            "description": "",
-            "enum": [
-                "nonbinary man",
-                "nonbinary woman",
-                "transgender woman",
-                "transgender man",
-                "cisgender man",
-                "cisgender woman"
-            ],
-            "title": "GenderType",
-            "type": "string"
-        },
         "Image": {
             "additionalProperties": false,
             "description": "",
@@ -295,15 +282,11 @@
                 "birth_date": {
                     "type": "string"
                 },
-                "current_address": {
-                    "$ref": "#/$defs/Address",
-                    "description": "The address at which a person currently lives"
-                },
                 "description": {
                     "type": "string"
                 },
                 "gender": {
-                    "$ref": "#/$defs/GenderType"
+                    "type": "string"
                 },
                 "has_employment_history": {
                     "items": {

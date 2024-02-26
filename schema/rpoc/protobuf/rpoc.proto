@@ -88,7 +88,6 @@ message Person
   string primaryEmail = 0
   string birthDate = 0
   genderType gender = 0
-  address currentAddress = 0
   string position = 0
   string nick = 0
   image avatar = 0

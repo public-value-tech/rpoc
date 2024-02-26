@@ -7,7 +7,7 @@
 URI: [rpoc:Address](https://pub.tech/schema/rpoc/Address)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Person]++-%20current_address%200..1>[Address&#124;street:string%20%3F;city:string%20%3F;postal_code:string%20%3F],[Person])](https://yuml.me/diagram/nofunky;dir:TB/class/[Person]++-%20current_address%200..1>[Address&#124;street:string%20%3F;city:string%20%3F;postal_code:string%20%3F],[Person])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Address&#124;street:string%20%3F;city:string%20%3F;postal_code:string%20%3F])](https://yuml.me/diagram/nofunky;dir:TB/class/[Address&#124;street:string%20%3F;city:string%20%3F;postal_code:string%20%3F])
 
 ## Referenced by Class
 

@@ -1,14 +1,12 @@
 # Auto generated from rpoc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-07-29T20:25:40
+# Generation date: 2023-11-21T00:57:46
 # Schema: rpoc
 #
 # id: https://pub.tech/schema/rpoc/
-# description: Information about people, their roles together with orgainsational context based on
-#              [schema.org](http://schema.org) and [Team Topologies](https://teamtopologies.com/).
+# description: Information about people, their roles together with orgainsational context based on [schema.org](http://schema.org) and [Team Topologies](https://teamtopologies.com/).
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
-import sys
 import re
 from jsonasobj2 import JsonObj, as_dict
 from typing import Optional, List, Union, Dict, ClassVar, Any
@@ -33,7 +31,6 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-GSSO = CurieNamespace('GSSO', 'http://purl.obolibrary.org/obo/GSSO_')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
@@ -122,7 +119,6 @@ class Person(NamedThing):
     primary_email: Optional[str] = None
     birth_date: Optional[str] = None
     gender: Optional[Union[str, "GenderType"]] = None
-    current_address: Optional[Union[dict, "Address"]] = None
     position: Optional[str] = None
     nick: Optional[str] = None
     avatar: Optional[Union[dict, "Image"]] = None
@@ -138,20 +134,20 @@ class Person(NamedThing):
         if self.primary_email is not None and not isinstance(self.primary_email, str):
             self.primary_email = str(self.primary_email)
 
-        if self.birth_date is not None and not isinstance(self.birth_date, str):
-            self.birth_date = str(self.birth_date)
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
-        if self.gender is not None and not isinstance(self.gender, GenderType):
-            self.gender = GenderType(self.gender)
-
-        if self.current_address is not None and not isinstance(self.current_address, Address):
-            self.current_address = Address(**as_dict(self.current_address))
+        if self.nick is not None and not isinstance(self.nick, str):
+            self.nick = str(self.nick)
 
         if self.position is not None and not isinstance(self.position, str):
             self.position = str(self.position)
 
-        if self.nick is not None and not isinstance(self.nick, str):
-            self.nick = str(self.nick)
+        if self.birth_date is not None and not isinstance(self.birth_date, str):
+            self.birth_date = str(self.birth_date)
+
+        if self.gender is not None and not isinstance(self.gender, str):
+            self.gender = str(self.gender)
 
         if self.avatar is not None and not isinstance(self.avatar, Image):
             self.avatar = Image(**as_dict(self.avatar))
@@ -554,14 +550,18 @@ class Image(YAMLRoot):
 # Enumerations
 class ContextType(EnumDefinitionImpl):
 
-    team = PermissibleValue(text="team",
-                               description="A team is a group of people working together on a project")
-    group = PermissibleValue(text="group",
-                                 description="A group is a collection of people with a common interest")
-    project = PermissibleValue(text="project",
-                                     description="A project is a temporary endeavor with a defined goal")
-    organization = PermissibleValue(text="organization",
-                                               description="An organization is a group of people with a common purpose")
+    team = PermissibleValue(
+        text="team",
+        description="A team is a group of people working together on a project")
+    group = PermissibleValue(
+        text="group",
+        description="A group is a collection of people with a common interest")
+    project = PermissibleValue(
+        text="project",
+        description="A project is a temporary endeavor with a defined goal")
+    organization = PermissibleValue(
+        text="organization",
+        description="An organization is a group of people with a common purpose")
 
     _defn = EnumDefinition(
         name="ContextType",
@@ -569,12 +569,15 @@ class ContextType(EnumDefinitionImpl):
 
 class RoleType(EnumDefinitionImpl):
 
-    permanent = PermissibleValue(text="permanent",
-                                         description="A member who is permanent part of a team or group")
-    enabling = PermissibleValue(text="enabling",
-                                       description="A enabling role is a person who helps a team or group without being a permanent member")
-    temporary = PermissibleValue(text="temporary",
-                                         description="A short lived role that is not permanent")
+    permanent = PermissibleValue(
+        text="permanent",
+        description="A member who is permanent part of a team or group")
+    enabling = PermissibleValue(
+        text="enabling",
+        description="A enabling role is a person who helps a team or group without being a permanent member")
+    temporary = PermissibleValue(
+        text="temporary",
+        description="A short lived role that is not permanent")
 
     _defn = EnumDefinition(
         name="RoleType",
@@ -582,43 +585,19 @@ class RoleType(EnumDefinitionImpl):
 
 class InteractionType(EnumDefinitionImpl):
 
-    collaboration = PermissibleValue(text="collaboration",
-                                                 description="A collaboration interaction is a relationship between two contexts which work together on a project")
-    facilitating = PermissibleValue(text="facilitating",
-                                               description="A facilitating interaction is a relationship between two contexts which help each other")
-    xaas = PermissibleValue(text="xaas",
-                               description="A XaaS interaction is a relationship between two contexts where one provides a service to the other")
+    collaboration = PermissibleValue(
+        text="collaboration",
+        description="""A collaboration interaction is a relationship between two contexts which work together on a project""")
+    facilitating = PermissibleValue(
+        text="facilitating",
+        description="A facilitating interaction is a relationship between two contexts which help each other")
+    xaas = PermissibleValue(
+        text="xaas",
+        description="""A XaaS interaction is a relationship between two contexts where one provides a service to the other""")
 
     _defn = EnumDefinition(
         name="InteractionType",
     )
-
-class GenderType(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="GenderType",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "nonbinary man",
-                PermissibleValue(text="nonbinary man",
-                                 meaning=GSSO["009254"]) )
-        setattr(cls, "nonbinary woman",
-                PermissibleValue(text="nonbinary woman",
-                                 meaning=GSSO["009253"]) )
-        setattr(cls, "transgender woman",
-                PermissibleValue(text="transgender woman",
-                                 meaning=GSSO["000384"]) )
-        setattr(cls, "transgender man",
-                PermissibleValue(text="transgender man",
-                                 meaning=GSSO["000372"]) )
-        setattr(cls, "cisgender man",
-                PermissibleValue(text="cisgender man",
-                                 meaning=GSSO["000371"]) )
-        setattr(cls, "cisgender woman",
-                PermissibleValue(text="cisgender woman",
-                                 meaning=GSSO["000385"]) )
 
 # Slots
 class slots:
@@ -646,7 +625,7 @@ slots.parent = Slot(uri=RPOC.parent, name="parent", curie=RPOC.curie('parent'),
                    model_uri=RPOC.parent, domain=None, range=Optional[Union[str, ContextId]])
 
 slots.gender = Slot(uri=SCHEMA.gender, name="gender", curie=SCHEMA.curie('gender'),
-                   model_uri=RPOC.gender, domain=None, range=Optional[Union[str, "GenderType"]])
+                   model_uri=RPOC.gender, domain=None, range=Optional[str])
 
 slots.primary_email = Slot(uri=SCHEMA.email, name="primary_email", curie=SCHEMA.curie('email'),
                    model_uri=RPOC.primary_email, domain=None, range=Optional[str])

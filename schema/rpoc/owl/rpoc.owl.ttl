@@ -1,6 +1,4 @@
-@prefix GSSO: <http://purl.obolibrary.org/obo/GSSO_> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -21,12 +19,8 @@ rpoc: a owl:Ontology ;
         rpoc:Membership,
         rpoc:NamedThing,
         rpoc:WithLocation ;
-    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    linkml:generation_date "2023-07-29T20:25:36" ;
-    linkml:metamodel_version "1.7.0" ;
-    linkml:source_file "rpoc.yaml" ;
-    linkml:source_file_date "2023-07-29T20:25:20" ;
-    linkml:source_file_size 7301 .
+    linkml:id "https://pub.tech/schema/rpoc/" ;
+    linkml:imports "linkml:types" .
 
 rpoc:company a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -37,6 +31,12 @@ rpoc:contexts a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "contexts" ;
     rdfs:range rpoc:Context .
+
+rpoc:current_address a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "current_address" ;
+    rdfs:range rpoc:Address ;
+    skos:definition "The address at which a person currently lives" .
 
 rpoc:memberships a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -63,11 +63,9 @@ rpoc:website a owl:ObjectProperty,
     rdfs:label "website" ;
     rdfs:range linkml:Uri .
 
-linkml:SubsetDefinition a owl:Class ;
-    rdfs:label "subset_definition" .
+linkml:SubsetDefinition a owl:Class .
 
-linkml:TypeDefinition a owl:Class ;
-    rdfs:label "type_definition" .
+linkml:TypeDefinition a owl:Class .
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
@@ -77,20 +75,16 @@ rpoc:Interaction a owl:Class,
     rdfs:label "Interaction" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
             owl:onProperty prov:startedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Context ;
-            owl:onProperty rpoc:obsoleted_by ],
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:status ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:related_to ],
+            owl:onProperty rpoc:type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -98,11 +92,15 @@ rpoc:Interaction a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty schema1:status ],
+            owl:onProperty rpoc:related_to ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ] .
+            owl:onProperty prov:endedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Context ;
+            owl:onProperty rpoc:obsoleted_by ] .
 
 rpoc:WithLocation a owl:Class,
         linkml:ClassDefinition ;
@@ -126,14 +124,7 @@ rpoc:city a owl:ObjectProperty,
 rpoc:context a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "context" ;
-    rdfs:range rpoc:Context ;
-    rpoc:primary_key "True" .
-
-rpoc:current_address a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "current_address" ;
-    rdfs:range rpoc:Address ;
-    skos:definition "The address at which a person currently lives" .
+    rdfs:range rpoc:Context .
 
 rpoc:duration a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -170,6 +161,11 @@ rpoc:is_current a owl:ObjectProperty,
     rdfs:label "is_current" ;
     rdfs:range linkml:Boolean .
 
+rpoc:mission_statement a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "mission_statement" ;
+    rdfs:range linkml:String .
+
 rpoc:obsoleted_by a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "obsoleted_by" ;
@@ -183,8 +179,7 @@ rpoc:parent a owl:ObjectProperty,
 rpoc:person a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "person" ;
-    rdfs:range rpoc:Person ;
-    rpoc:primary_key "True" .
+    rdfs:range rpoc:Person .
 
 rpoc:position a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -196,6 +191,11 @@ rpoc:postal_code a owl:ObjectProperty,
     rdfs:label "postal_code" ;
     rdfs:range linkml:String .
 
+rpoc:purpose_statement a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "purpose_statement" ;
+    rdfs:range linkml:String .
+
 rpoc:related_to a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "related_to" ;
@@ -204,8 +204,7 @@ rpoc:related_to a owl:ObjectProperty,
 rpoc:role a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "role" ;
-    rdfs:range rpoc:Role ;
-    rpoc:primary_key "True" .
+    rdfs:range rpoc:Role .
 
 rpoc:role_type a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -222,30 +221,6 @@ rpoc:type a owl:ObjectProperty,
     rdfs:label "type" ;
     rdfs:range linkml:String .
 
-GSSO:000371 a owl:Class,
-        rpoc:GenderType ;
-    rdfs:label "cisgender man" .
-
-GSSO:000372 a owl:Class,
-        rpoc:GenderType ;
-    rdfs:label "transgender man" .
-
-GSSO:000384 a owl:Class,
-        rpoc:GenderType ;
-    rdfs:label "transgender woman" .
-
-GSSO:000385 a owl:Class,
-        rpoc:GenderType ;
-    rdfs:label "cisgender woman" .
-
-GSSO:009253 a owl:Class,
-        rpoc:GenderType ;
-    rdfs:label "nonbinary woman" .
-
-GSSO:009254 a owl:Class,
-        rpoc:GenderType ;
-    rdfs:label "nonbinary man" .
-
 schema1:birthDate a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "birth_date" ;
@@ -261,7 +236,7 @@ schema1:contentUrl a owl:ObjectProperty,
 schema1:gender a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "gender" ;
-    rdfs:range rpoc:GenderType ;
+    rdfs:range linkml:String ;
     skos:exactMatch schema1:gender .
 
 schema1:image a owl:ObjectProperty,
@@ -276,11 +251,22 @@ schema1:roleName a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:exactMatch schema1:roleName .
 
-schema1:status a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "status" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch schema1:status .
+rpoc:Address a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Address" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:street ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:postal_code ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:city ] ;
+    skos:exactMatch schema1:PostalAddress .
 
 <https://pub.tech/schema/rpoc/ContextType#group> a owl:Class,
         rpoc:ContextType ;
@@ -313,19 +299,19 @@ rpoc:Event a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Float ;
-            owl:onProperty rpoc:duration ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
             owl:onProperty prov:startedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
-            owl:onProperty rpoc:is_current ] ;
+            owl:onProperty rpoc:is_current ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:endedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Float ;
+            owl:onProperty rpoc:duration ] ;
     skos:closeMatch schema1:Event .
 
 <https://pub.tech/schema/rpoc/InteractionType#collaboration> a owl:Class,
@@ -352,11 +338,6 @@ rpoc:Event a owl:Class,
         rpoc:RoleType ;
     rdfs:label "temporary" .
 
-rpoc:mission_statement a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "mission_statement" ;
-    rdfs:range linkml:String .
-
 schema1:alternateName a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "nick" ;
@@ -381,23 +362,6 @@ schema1:name a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:exactMatch schema1:name .
 
-rpoc:Address a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Address" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:city ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:street ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:postal_code ] ;
-    skos:exactMatch schema1:PostalAddress .
-
 rpoc:InteractionType a owl:Class,
         linkml:EnumDefinition ;
     rdfs:label "InteractionType" ;
@@ -411,14 +375,6 @@ rpoc:Membership a owl:Class,
     rdfs:label "Membership" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Context ;
-            owl:onProperty rpoc:context ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Person ;
             owl:onProperty rpoc:person ],
         [ a owl:Restriction ;
@@ -427,12 +383,24 @@ rpoc:Membership a owl:Class,
             owl:onProperty prov:startedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:endedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Role ;
-            owl:onProperty rpoc:role ] ;
+            owl:onProperty rpoc:role ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:status ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Context ;
+            owl:onProperty rpoc:context ] ;
     skos:definition "A person's roles in a context" ;
     skos:exactMatch rpoc:Membership .
 
@@ -440,6 +408,18 @@ rpoc:Person a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:alternateName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:position ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Image ;
+            owl:onProperty rpoc:avatar ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
@@ -452,27 +432,11 @@ rpoc:Person a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:position ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:GenderType ;
-            owl:onProperty schema1:gender ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Image ;
-            owl:onProperty rpoc:avatar ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Address ;
-            owl:onProperty rpoc:current_address ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty schema1:birthDate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty schema1:alternateName ],
+            owl:onProperty schema1:gender ],
         rpoc:HasAliases,
         rpoc:NamedThing ;
     skos:definition "A person (alive, dead, undead, or fictional)." ;
@@ -483,19 +447,8 @@ rpoc:Role a owl:Class,
     rdfs:label "Role" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:RoleType ;
-            owl:onProperty rpoc:role_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:roleName ;
@@ -504,9 +457,30 @@ rpoc:Role a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
             owl:onProperty prov:startedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rpoc:aliases ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:endedAtTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:RoleType ;
+            owl:onProperty rpoc:role_type ],
         rpoc:HasAliases ;
     skos:definition "A set of responsibilities, skills and tasks that a person has in a context" ;
     skos:exactMatch schema1:Role .
+
+schema1:status a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "status" ;
+    rdfs:range linkml:String ;
+    skos:exactMatch schema1:status .
 
 rpoc:ContextType a owl:Class,
         linkml:EnumDefinition ;
@@ -523,15 +497,15 @@ rpoc:NamedThing a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty schema1:name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty schema1:description ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:identifier ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty schema1:name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Image ;
@@ -544,19 +518,19 @@ rpoc:Organization a owl:Class,
     rdfs:label "Organization" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass rpoc:Place ;
-            owl:onProperty rpoc:founding_location ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:mission_statement ],
+            owl:onProperty rpoc:founding_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty rpoc:founding_date ],
+            owl:onProperty rpoc:mission_statement ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass rpoc:Place ;
+            owl:onProperty rpoc:founding_location ],
         rpoc:HasAliases,
         rpoc:NamedThing ;
     skos:definition "An organization such as a company or university" ;
@@ -569,13 +543,13 @@ rpoc:Place a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty schema1:name ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:identifier ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty schema1:name ],
         rpoc:HasAliases .
 
 schema1:description a owl:ObjectProperty,
@@ -632,47 +606,34 @@ rpoc:Context a owl:Class,
     rdfs:label "Context" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty rpoc:purpose_statement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty rpoc:aliases ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Date ;
             owl:onProperty prov:startedAtTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Date ;
-            owl:onProperty prov:endedAtTime ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass rpoc:Context ;
             owl:onProperty rpoc:parent ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rpoc:aliases ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty schema1:email ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty rpoc:mission_statement ],
+            owl:onClass linkml:Date ;
+            owl:onProperty prov:endedAtTime ],
         rpoc:HasAliases,
         rpoc:NamedThing ;
     skos:definition "A team, group, project, or other entity that has a context for a person" ;
     skos:exactMatch schema1:Project .
 
-rpoc:GenderType a owl:Class,
-        linkml:EnumDefinition ;
-    rdfs:label "GenderType" ;
-    owl:unionOf ( GSSO:009254 GSSO:009253 GSSO:000384 GSSO:000372 GSSO:000371 GSSO:000385 ) ;
-    linkml:permissible_values GSSO:000371,
-        GSSO:000372,
-        GSSO:000384,
-        GSSO:000385,
-        GSSO:009253,
-        GSSO:009254 .
+linkml:ClassDefinition a owl:Class .
 
-linkml:ClassDefinition a owl:Class ;
-    rdfs:label "class_definition" .
-
-linkml:SlotDefinition a owl:Class ;
-    rdfs:label "slot_definition" .
+linkml:SlotDefinition a owl:Class .
 
 

@@ -7,7 +7,7 @@ A set of responsibilities, skills and tasks that a person has in a context
 URI: [rpoc:Role](https://pub.tech/schema/rpoc/Role)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Membership]-%20role%200..1>[Role&#124;role_name:string;role_type:RoleType%20%3F;description:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;aliases:string%20*],[Role]uses%20-.->[HasAliases],[Membership],[HasAliases])](https://yuml.me/diagram/nofunky;dir:TB/class/[Membership]-%20role%200..1>[Role&#124;role_name:string;role_type:RoleType%20%3F;description:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;aliases:string%20*],[Role]uses%20-.->[HasAliases],[Membership],[HasAliases])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Membership]-%20role%200..1>[Role&#124;role_name:string;role_type:RoleType%20%3F;description:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;status:string%20%3F;aliases:string%20*],[Role]uses%20-.->[HasAliases],[Membership],[HasAliases])](https://yuml.me/diagram/nofunky;dir:TB/class/[Membership]-%20role%200..1>[Role&#124;role_name:string;role_type:RoleType%20%3F;description:string%20%3F;start_date:date%20%3F;end_date:date%20%3F;status:string%20%3F;aliases:string%20*],[Role]uses%20-.->[HasAliases],[Membership],[HasAliases])
 
 ## Uses Mixin
 

@@ -96,10 +96,9 @@ type Person implements HasAliases
     image: Image
     primaryEmail: String
     birthDate: String
-    gender: GenderType
-    currentAddress: Address
     position: String
     nick: String
+    gender: String
     avatar: Image
     hasEmploymentHistory: [EmploymentEvent]
     aliases: [String]

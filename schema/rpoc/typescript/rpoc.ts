@@ -8,7 +8,7 @@ export type PlaceId = string;
 export type date = string;
 
 export enum ContextType {
-
+    
     /** A team is a group of people working together on a project */
     team = "team",
     /** A group is a collection of people with a common interest */
@@ -20,7 +20,7 @@ export enum ContextType {
 };
 
 export enum RoleType {
-
+    
     /** A member who is permanent part of a team or group */
     permanent = "permanent",
     /** A enabling role is a person who helps a team or group without being a permanent member */
@@ -30,7 +30,7 @@ export enum RoleType {
 };
 
 export enum InteractionType {
-
+    
     /** A collaboration interaction is a relationship between two contexts which work together on a project */
     collaboration = "collaboration",
     /** A facilitating interaction is a relationship between two contexts which help each other */
@@ -38,7 +38,6 @@ export enum InteractionType {
     /** A XaaS interaction is a relationship between two contexts where one provides a service to the other */
     xaas = "xaas",
 };
-
 
 
 /**
@@ -49,30 +48,34 @@ export interface NamedThing {
     name?: string,
     description?: string,
     image?: Image,
-};
+}
+
+
 /**
  * A person (alive, dead, undead, or fictional).
  */
 export interface Person extends NamedThing, HasAliases {
     id: string,
     alternate_ids?: string[],
-    name?: string,
-    aliases?: string[],
-    position?: string,
-    nick?: string,
-    description?: string,
     primary_email?: string,
+    name?: string,
+    nick?: string,
+    position?: string,
     birth_date?: string,
     gender?: string,
     avatar?: Image,
     has_employment_history?: EmploymentEvent[],
 }
+
+
 /**
  * A mixin applied to any class that can have aliases/alternateNames
  */
 export interface HasAliases {
     aliases?: string[],
-};
+}
+
+
 /**
  * A team, group, project, or other entity that has a context for a person
  */
@@ -87,7 +90,9 @@ export interface Context extends NamedThing, HasAliases {
     end_date?: date,
     parent?: ContextId,
     image?: Image,
-};
+}
+
+
 /**
  * A set of responsibilities, skills and tasks that a person has in a context
  */
@@ -100,6 +105,8 @@ export interface Role extends HasAliases {
     aliases?: string[],
     status?: string,
 }
+
+
 /**
  * A person's roles in a context
  */
@@ -111,7 +118,9 @@ export interface Membership {
     end_date?: date,
     status?: string,
     description?: string,
-};
+}
+
+
 /**
  * An organization such as a company or university
  */
@@ -124,26 +133,34 @@ export interface Organization extends NamedThing, HasAliases {
     name?: string,
     description?: string,
     image?: Image,
-};
+}
+
+
 
 export interface Place extends HasAliases {
     id: string,
     name?: string,
     aliases?: string[],
-};
+}
+
+
 
 export interface Address {
     street?: string,
     city?: string,
     postal_code?: string,
-};
+}
+
+
 
 export interface Event {
     start_date?: date,
     end_date?: date,
     duration?: number,
     is_current?: boolean,
-};
+}
+
+
 
 export interface Interaction {
     type?: string,
@@ -153,7 +170,9 @@ export interface Interaction {
     related_to?: string,
     obsoleted_by?: ContextId,
     description?: string,
-};
+}
+
+
 
 export interface EmploymentEvent extends Event {
     employed_at?: OrganizationId,
@@ -161,17 +180,19 @@ export interface EmploymentEvent extends Event {
     end_date?: date,
     duration?: number,
     is_current?: boolean,
-};
+}
+
+
 
 export interface WithLocation {
     in_location?: PlaceId,
-};
+}
+
+
 
 export interface Image {
     url?: string,
-};
-
-export interface Image  {
-    url?: string,
 }
+
+
 

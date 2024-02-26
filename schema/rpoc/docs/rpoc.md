@@ -66,6 +66,7 @@ Information about people, their roles together with orgainsational context based
  * [primary_email](primary_email.md)
      * [Context➞primary_email](Context_primary_email.md)
      * [Person➞primary_email](Person_primary_email.md)
+ * [purpose_statement](purpose_statement.md)
  * [related_to](related_to.md)
  * [role](role.md)
  * [role_name](role_name.md)
@@ -81,7 +82,6 @@ Information about people, their roles together with orgainsational context based
 ### Enums
 
  * [ContextType](ContextType.md)
- * [GenderType](GenderType.md)
  * [InteractionType](InteractionType.md)
  * [RoleType](RoleType.md)
 

@@ -159,11 +159,10 @@ linkml:Sparqlpath xsd:string
           &<HasAliases_tes> ;
           rdf:type [ <HasAliases> ] ? ;
           schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:String ? ;
-          schema1:gender @<GenderType> ? ;
-          <current_address> @<Address> ? ;
-          <position> @linkml:String ? ;
           schema1:alternateName @linkml:String ? ;
+          <position> @linkml:String ? ;
+          schema1:birthDate @linkml:String ? ;
+          schema1:gender @linkml:String ? ;
           <avatar> @<Image> ? ;
           <has_employment_history> @<EmploymentEvent> * ;
           <aliases> @linkml:String *
